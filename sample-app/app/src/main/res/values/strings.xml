@@ -1,0 +1,210 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Socure DocV SDK Demo App</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="rel_upload_url">https://upload.socure.com</string>
+    <string name="dbg_upload_url">https://stage-upload-4d38.socure.com</string>
+
+    <!-- put your Socure Public Key below -->
+    <string name="socurePublicKey" translatable="false">REPLACE ME WITH YOUR SOCURE PUBLIC KEY</string> <!-- TODO : this needs to be done for building and SDK use -->
+
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="permission_granted">Permission Granted, Now you can access storage and camera.</string>
+    <string name="permission_denied">Permission Denied, You cannot access location data, storage and camera.</string>
+    <string name="permission_request_message">You need to allow all the permissions.</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="front_scan">Document Front Scan Yo</string>
+    <string name="back_scan">Document Back Scan</string>
+    <string name="selfie">Selfie</string>
+    <string name="upload_docs">Upload Documents</string>
+    <string name="log_tag">App Activity ====></string>
+    <string name="reasons">Reasons</string>
+    <string name="risk_score">Risk Score</string>
+    <string name="result">result</string>
+    <string name="reference_id">Reference Id : </string>
+
+    <!-- Basic Information Page -->
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="dob">Date of Birth yyyy-MM-dd </string>
+    <string name="ssn_all_caps">SSN</string>
+    <string name="submit">Submit</string>
+    <string name="date_format">yyyy-MM-dd</string>
+    <string name="document_number">Document Number</string>
+    <string name="address_one">Address Line 1</string>
+    <string name="address_two">Address Line 2</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="phone_number">Phone Number +1 0000000000</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="address">Address:</string>
+    <string name="country">Country</string>
+    <string name="email">Email</string>
+
+
+    <!-- Email Auth Score API Response -->
+    <string name="email_auth_score_api_response"><u>Email Auth Score API Response</u></string>
+    <string name="decision">Decision : </string>
+    <string name="reason_codes">Reason Codes : </string>
+    <string name="status">Status : </string>
+    <string name="message">Message : </string>
+
+    <string name="title_activity_results">ResultsActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="document_capture_error_front">We could not find your ID photo.\n Please make sure no shadow or bright \n light is hiding the face</string>
+    <string name="document_capture_error_back">We could not read the barcode.It was \n slightly bury or not present. Please \n hold steady and try again.</string>
+
+    <string name="get_started">GET STARTED</string>
+    <string name="how_it_works">How it works</string>
+    <string name="preferred_method_to_fill_the_form">Preferred Method to \n fill the form</string>
+    <string name="auto_fill">Autofill</string>
+    <string name="manual">Manual</string>
+    <string name="enter_the_details_manually">Enter the details manually</string>
+    <string name="consent">I consent to use my data for this demo.</string>
+    <string name="start">Start</string>
+    <string name="document_verification">Document Verification \nin Just a Few Easy Steps</string>
+    <string name="shoulders_up">Shoulders Up</string>
+    <string name="capture_arm_s_length_selfie">Capture Arm’s Length Selfie</string>
+    <string name="capture_close_up_selfie">Capture Close Up Selfie</string>
+    <string name="face_only">Face Only</string>
+    <string name="document_front">Document Front</string>
+    <string name="capture_front_of_identification">Capture Front of Identification</string>
+    <string name="document_back">Document Back</string>
+    <string name="capture_back_of_identification_n_if_applicable">Capture Back of Identification \n(If Applicable)</string>
+
+    <string name="document_analysis">Document Analysis</string>
+    <string name="api_call">API Call</string>
+    <string name="request">Request</string>
+    <string name="response">Response</string>
+    <string name="review_title">Review</string>
+    <string name="review_subtitle">Your application needs additional review</string>
+    <string name="review_message">A customer service representative will contact you to assist with your account.</string>
+    <string name="approved_title">Approved!</string>
+    <string name="rejected_title">Rejected</string>
+
+    <string name="scanned_information">Scanned Information</string>
+    <string name="date_birthday">Date of Birthday</string>
+    <string name="street_address">Street Address</string>
+    <string name="zip">Zip Code</string>
+
+    <string name="mobile_number">Mobile Number</string>
+    <string name="continue_label">Continue</string>
+    <string name="mask_phone">+1-000-000-0000</string>
+    <string name="phone">Phone</string>
+
+    <string name="zip_must_digits">ZIP code must be 5 or 9 digits</string>
+    <string name="city_invalid">Enter a valid city</string>
+    <string name="invalid_input">Invalid input</string>
+
+    /**************************************************************************/
+    /*
+    Configuration for Alerts generic
+    <string name="alert_message">Are you sure you want to exit?</string>
+    <string name="alert_title">Cancel Capture</string>
+    <string name="alert_button_positive">Yes, I\'m sure</string>
+    <string name="alert_button_negative">No, go back</string>
+
+    /****Alerts for cancel selfie scan*****/
+    <string name="alert_selfie_cancel_message">Are you sure you want to exit?</string>
+    <string name="alert_selfie_cancel_title">Cancel Capture</string>
+    <string name="alert_selfie_positive_button">Yes, I\'m sure</string>
+    <string name="alert_selfie_negative_button">No, go back</string>
+    /**************************************************************************/
+
+    /**************************************************************************/
+    /*
+    Configuration for Alerts
+    *//***Alert for cancel Document Scan***/
+    <string name="alert_doc_cancel_message">Are you sure you want to exit?</string>
+    <string name="alert_doc_cancel_title">Cancel Capture</string>
+    <string name="alert_doc_positive_button">Yes, I\'m sure</string>
+    <string name="alert_doc_negative_button">No, go back</string>
+    /**************************************************************************/
+
+    /* Configuration preview scan
+    <string name="preview_text_information_scan_passport">Is the data on your passport fully\n visible, glare free and not blurred?</string>
+    <string name="preview_text_information_scan">Is the data on your ID fully visible,\n glare free and not blurred?</string>
+    <string name="preview_information_extracted">Information Extracted!</string>
+    /**************************************************************************/
+    /*
+    Passport Scan
+    */
+    <string name="passport_scanner_title">Scan Passport</string>
+    <string name="passport_front_help_text_collapsed">Place your document within the frame until it is captured automatically</string>
+    <string name="passport_front_help_text_expanded">Place your document within the frame as it is shown in the image above. The capturing happens automatically.\n\nEnsure that all data is readable\n and avoid reflection.</string>
+    <string name="passport_front_help_title">How to scan your passport</string>
+    <string name="passport_status_bar_searching_document">Searching Document...</string>
+    <string name="mrz_hint"><![CDATA[PXXX<<XXXXXXXX<<<<<<<<\nXXXXXXXXXXXXX<<<<<<<<<]]></string>
+    <string name="passport_scanner_step1">Step 1 of 2</string>
+    /**************************************************************************/
+
+    /**************************************************************************/
+    /*
+    License Scan
+    */
+    <string name="license_scanner_title">Scan ID</string>
+    <string name="license_scanner_step1a">Step 1 of 2</string>
+    <string name="license_scanner_step1b">Step 2 of 2</string>
+
+    <string name="license_status_bar_searching_document">Searching Document...</string>
+    <string name="license_status_bar_on_stand_by">On stand-by</string>
+    <string name="license_come_closer">Come closer</string>
+    <string name="license_align_doc">Align document to frame</string>
+    <string name="license_status_bar_keep_steady">Keep steady</string>
+    <string name="blur_detected">Blur detected. Tap on screen to auto-focus</string>
+    /**************************************************************************/
+    /*
+    License Scan FRONT
+    */
+    <string name="license_front_help_text_collapsed">Place your document within the frame until all 4 edges are aligned and it is captured automatically</string>
+    <string name="license_front_help_text_expanded">Place your document within the frame as it is shown in the image above. The capturing happens automatically.\n\nEnsure that all data is readable\n and avoid reflection.</string>
+    <string name="license_front_help_title">How to scan your ID</string>
+    <string name="tab_item_front">Front</string>
+    <string name="mask_text_front">Front</string>
+    /**************************************************************************/
+
+    /**************************************************************************/
+    /*
+    License Scan BACK
+    */
+    <string name="license_back_help_text_collapsed">Place the barcode in front of the camera until it is captured automatically</string>
+    <string name="license_back_help_text_expanded">Place the barcode in front of the camera as it is shown in the image above. The capturing happens automatically.</string>
+    <string name="license_back_help_title">How to scan your ID</string>
+    <string name="license_back_no_barcode_button">No Barcode on my ID</string>
+    <string name="tab_item_back">Back</string>
+    <string name="mask_text_back">Back</string>
+
+    <string name="license_back_no_barcode">There is none on my ID</string>
+    <string name="license_back_no_barcode_detected">No barcode/MRZ detected.</string>
+    /**************************************************************************/
+
+    /**************************************************************************/
+    /*
+    Selfie Scan
+    */
+    <string name="selfie_scanner_title">Selfie</string>
+    <string name="selfie_scanner_step2">Step 2 of 2</string>
+    <string name="selfie_help_closer_title">How to capture a selfie</string>
+    <string name="selfie_help_closer_text_expanded">Follow the two step process and align your face with the frame. Hold your device on eye level and look straight into the camera. Your face will be captured automatically.</string>
+    <string name="selfie_status_bar">On stand-by</string>
+    <string name="selfie_preview_text_information">Is your face fully visible,\n glare free and not blurred?</string>
+    <string name="selfie_information_extracted">Face Extracted!</string>
+
+    <string name="no_connection">Please check your internet connection</string>
+
+    <string name="bubble_manual_capture">Auto-capture is too slow\nPress button to capture manually</string>
+    <string name="bubble_no_rectangle">Unable to find identification in frame</string>
+    <string name="bubble_blur">Document image is blurry. Please tap on the screen, over the document, to bring the document into focus</string>
+    <string name="bubble_low_light">Low lighting condition detected</string>
+
+    <string name="blink_to_selfie">Blink please ;)</string>
+</resources>

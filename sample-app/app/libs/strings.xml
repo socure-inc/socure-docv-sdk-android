@@ -1,0 +1,178 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">ReplaceMe</string>
+
+    <string name="socurePublicKey" translatable="false">ReplaceMe</string>
+    <string name="action_settings">Settings</string>
+    <string name="permission_granted">Permission Granted, Now you can access storage and camera.</string>
+    <string name="permission_denied">Permission Denied, You cannot access location data, storage and camera.</string>
+    <string name="permission_request_message">You need to allow all the permissions.</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="front_scan">Document Front Scan</string>
+    <string name="back_scan">Document Back Scan</string>
+    <string name="selfie">Selfie</string>
+    <string name="upload_docs">Upload Documents</string>
+    <string name="log_tag">App Activity ====></string>
+    <string name="reasons">Reasons</string>
+    <string name="risk_score">Risk Score</string>
+    <string name="result">result</string>
+    <string name="reference_id">Reference Id : </string>
+
+    <!-- Basic Information Page -->
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="dob">Date of Birth yyyy-MM-dd </string>
+    <string name="ssn_all_caps">SSN</string>
+    <string name="submit">Submit</string>
+    <string name="date_format">yyyy-MM-dd</string>
+    <string name="document_number">Document Number</string>
+    <string name="address_one">Address Line 1</string>
+    <string name="address_two">Address Line 2</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="phone_number">Phone Number +1 0000000000</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="address">Address:</string>
+    <string name="country">Country</string>
+    <string name="email">Email</string>
+
+
+    <!-- Email Auth Score API Response -->
+    <string name="email_auth_score_api_response"><u>Email Auth Score API Response</u></string>
+    <string name="decision">Decision : </string>
+    <string name="reason_codes">Reason Codes : </string>
+    <string name="status">Status : </string>
+    <string name="message">Message : </string>
+
+    <string name="title_activity_results">ResultsActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="document_capture_error_front">We could not find your ID photo.\n Please make sure no shadow or bright \n light is hiding the face</string>
+    <string name="document_capture_error_back">We could not read the barcode.It was \n slightly bury or not present. Please \n hold steady and try again.</string>
+
+    <string name="get_started">GET STARTED</string>
+    <string name="how_it_works">How it works</string>
+    <string name="preferred_method_to_fill_the_form">Preferred Method to \n fill the form</string>
+    <string name="auto_fill">Autofill</string>
+    <string name="manual">Manual</string>
+    <string name="enter_the_details_manually">Enter the details manually</string>
+    <string name="consent">I consent to use my data for this demo.</string>
+    <string name="start">Start</string>
+    <string name="document_verification">Document Verification \nin Just a Few Easy Steps</string>
+    <string name="shoulders_up">Shoulders Up</string>
+    <string name="capture_arm_s_length_selfie">Capture Arm’s Length Selfie</string>
+    <string name="capture_close_up_selfie">Capture Close Up Selfie</string>
+    <string name="face_only">Face Only</string>
+    <string name="document_front">Document Front</string>
+    <string name="capture_front_of_identification">Capture Front of Identification</string>
+    <string name="document_back">Document Back</string>
+    <string name="capture_back_of_identification_n_if_applicable">Capture Back of Identification \n(If Applicable)</string>
+
+    <string name="document_analysis">Document Analysis</string>
+    <string name="api_call">API Call</string>
+    <string name="request">Request</string>
+    <string name="response">Response</string>
+    <string name="review_title">Review</string>
+    <string name="review_subtitle">Your application needs additional review</string>
+    <string name="review_message">A customer service representative will contact you to assist with your account.</string>
+    <string name="approved_title">Approved!</string>
+    <string name="rejected_title">Rejected</string>
+
+    <string name="scanned_information">Scanned Information</string>
+    <string name="date_birthday">Date of Birthday</string>
+    <string name="street_address">Street Address</string>
+    <string name="zip">Zip Code</string>
+
+    <string name="mobile_number">Mobile Number</string>
+    <string name="continue_label">Continue</string>
+    <string name="mask_phone">+1-000-000-0000</string>
+    <string name="phone">Phone</string>
+
+    <string name="zip_must_digits">ZIP code must be 5 or 9 digits</string>
+    <string name="city_invalid">Enter a valid city</string>
+    <string name="invalid_input">Invalid input</string>
+
+    /**************************************************************************/
+    /*
+    Configuration for Alerts generic
+    <string name="alert_message" tools:ignore="ExtraTranslation">Are you sure you want to exit?</string>
+    <string name="alert_title" tools:ignore="ExtraTranslation">Cancel Capture</string>
+    <string name="alert_button_positive" tools:ignore="ExtraTranslation">Yes, I\'m sure</string>
+    <string name="alert_button_negative" tools:ignore="ExtraTranslation">No, go back</string>
+
+    /****Alerts for cancel selfie scan*****/
+    <string name="alert_selfie_cancel_message">Are you sure you want to exit?</string>
+    <string name="alert_selfie_cancel_title">Cancel Capture</string>
+    <string name="alert_selfie_positive_button">Yes, I\'m sure</string>
+    <string name="alert_selfie_negative_button">No, go back</string>
+    /**************************************************************************/
+
+    /**************************************************************************/
+    /*
+    Configuration for Alerts
+    *//***Alert for cancel Document Scan***/
+    <string name="alert_doc_cancel_message">Are you sure you want to exit?</string>
+    <string name="alert_doc_cancel_title">Cancel Capture</string>
+    <string name="alert_doc_positive_button">Yes, I\'m sure</string>
+    <string name="alert_doc_negative_button">No, go back</string>
+    /**************************************************************************/
+
+    /* Configuration preview scan
+    <string name="preview_text_information_scan" tools:ignore="ExtraTranslation">Is the data on your ID fully visible, glare free and not blurred?</string>
+    <string name="preview_information_extracted" tools:ignore="ExtraTranslation">Information Extracted!</string>
+
+    /**************************************************************************/
+    /*
+    Passport Scan
+    */
+    <string name="passport_scanner_title" tools:ignore="ExtraTranslation">Scan Document</string>
+    <string name="passport_front_help_text_collapsed">Place your document within the frame until it is captured automatically</string>
+    <string name="passport_front_help_text_expanded">Place your document within the frame as it is shown in the image above. The capturing happens automatically.\n\nEnsure that all data is readable and avoid reflection.</string>
+    <string name="passport_front_help_title">Document Front</string>
+    <string name="passport_status_bar_searching_document" tools:ignore="ExtraTranslation">Searching Document...</string>
+    <string name="mrz_hint"><![CDATA[PXXX<<XXXXXXXX<<<<<<<<\nXXXXXXXXXXXXX<<<<<<<<<]]></string>
+    /**************************************************************************/
+
+    /**************************************************************************/
+    /*
+    License Scan
+    */
+    <string name="license_scanner_title" tools:ignore="ExtraTranslation">Scan Document</string>
+    <string name="license_status_bar_searching_document" tools:ignore="ExtraTranslation">Searching Document...</string>
+    <string name="license_status_bar_on_stand_by" tools:ignore="ExtraTranslation">On stand-by</string>
+
+    /**************************************************************************/
+    /*
+    License Scan FRONT
+    */
+    <string name="license_front_help_text_collapsed">Place your document within the frame until all 4 edges are aligned and it is captured automatically</string>
+    <string name="license_front_help_text_expanded">Place your document within the frame as it is shown in the image above. The capturing happens automatically.\n\nEnsure that all data is readable and avoid reflection.</string>
+    <string name="license_front_help_title">Document Front</string>
+    <string name="tab_item_front">Front</string>
+    <string name="mask_text_front" tools:ignore="ExtraTranslation">Front</string>
+
+    /**************************************************************************/
+
+    /**************************************************************************/
+    /*
+    License Scan BACK
+    */
+    <string name="license_back_help_text_collapsed">Place the barcode in front of the camera until it is captured automatically</string>
+    <string name="license_back_help_text_expanded">Place the barcode in front of the camera as it is shown in the image above. The capturing happens automatically.</string>
+    <string name="license_back_help_title">Document Back</string>
+    <string name="tab_item_back">Back</string>
+    <string name="mask_text_back" tools:ignore="ExtraTranslation">Back</string>
+    /**************************************************************************/
+
+    /**************************************************************************/
+    /*
+    Selfie Scan
+    */
+    <string name="selfie_scanner_title" tools:ignore="ExtraTranslation">Face Recognition</string>
+    <string name="selfie_help_closer_title" tools:ignore="ExtraTranslation">Capture Close Up Selfie</string>
+    <string name="selfie_help_closer_text_expanded" tools:ignore="ExtraTranslation">Hold your device on eye level and look straight into the camera. Your face will be captured automatically.</string>
+    <string name="selfie_status_bar" tools:ignore="ExtraTranslation">On stand-by</string>
+    <string name="selfie_preview_text_information" tools:ignore="ExtraTranslation">Is the data on your ID fully visible, glare free and not blurred?</string>
+    <string name="selfie_information_extracted" tools:ignore="ExtraTranslation">Information Extracted!</string>
+
+    /**************************************************************************/
+</resources>

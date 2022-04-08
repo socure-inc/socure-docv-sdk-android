@@ -1,0 +1,33 @@
+/build
+build/
+.gradle/
+.idea/
+.DS_Store
+
+# Built application files
+*.apk
+*.ap_
+*.aab
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+
+bin/
+gen/
+out/
+
+local.properties
+
+proguard/
+
+*.log
+.navigation/
+
+captures/
+
+.externalNativeBuild
+SocureSDK/BareBones/app/noDeviceRisk
