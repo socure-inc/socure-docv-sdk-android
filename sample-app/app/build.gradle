@@ -75,7 +75,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
 
     // socure document verification sdk dependency
-    implementation 'com.github.socure-inc:android-sdk:ZwJp.zglCV.8Rs1z.9xUyDr'
+    implementation 'com.github.socure-inc:android-sdk:1pNXj.oBpG6.JcD1x.cntUH'
 }
 
 
