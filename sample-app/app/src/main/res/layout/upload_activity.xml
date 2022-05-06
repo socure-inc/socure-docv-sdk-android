@@ -156,8 +156,40 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white_socure"
                 app:layout_constraintTop_toBottomOf="@id/selfie_constraint"
-                android:text="Press to upload"
+                android:text="Press to upload document with selfie"
                 android:background="@color/orange_socure" />
+
+                <LinearLayout
+                android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/pressToUploadDoc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:textAllCaps="false"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textColor="@color/white_socure"
+                        app:layout_constraintTop_toBottomOf="@id/selfie_constraint"
+                        android:text="Press to upload document"
+                        android:background="@color/orange_socure" />
+
+                    <Button
+                        android:id="@+id/pressToUploadSelfie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:textAllCaps="false"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textColor="@color/white_socure"
+                        app:layout_constraintTop_toBottomOf="@id/selfie_constraint"
+                        android:text="Press to upload selfie"
+                        android:background="@color/orange_socure" />
+                </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
