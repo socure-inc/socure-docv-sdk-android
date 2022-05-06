@@ -64,7 +64,7 @@ class UploadActivity : AppCompatActivity(), UploadCallback {
 
         pressToUpload.setOnClickListener {
             simpleProgressBar.visibility = View.VISIBLE
-            val uploadUrl = if (BuildConfig.DEBUG) resources.getString(R.string.rel_upload_url) else resources.getString(R.string.rel_upload_url)
+            val uploadUrl = if (BuildConfig.DEBUG) resources.getString(R.string.dbg_upload_url) else resources.getString(R.string.rel_upload_url)
             imageUploader = ImageUploader(this.baseContext, socurePublicKey, uploadUrl)
             imageUploader?.imageUploader(this.baseContext)
 
@@ -74,7 +74,7 @@ class UploadActivity : AppCompatActivity(), UploadCallback {
         pressToUploadDoc.setOnClickListener {
             simpleProgressBar.visibility = View.VISIBLE
             val uploadUrl =
-                if (BuildConfig.DEBUG) resources.getString(R.string.rel_upload_url) else resources.getString(
+                if (BuildConfig.DEBUG) resources.getString(R.string.dbg_upload_url) else resources.getString(
                     R.string.rel_upload_url
                 )
             imageUploader = ImageUploader(this.baseContext, socurePublicKey, uploadUrl)
@@ -83,8 +83,9 @@ class UploadActivity : AppCompatActivity(), UploadCallback {
             uploadDocumentsAlone()
         }
 
-        pressToUploadSelfie.isEnabled = false
-        pressToUploadSelfie.isClickable = false
+        pressToUploadSelfie.setOnClickListener {
+            Toast.makeText(this, resources.getString(R.string.pls_upload_doc), Toast.LENGTH_SHORT).show()
+        }
 
         uploadSuccessLiveData.postValue(false)
 
@@ -105,8 +106,6 @@ class UploadActivity : AppCompatActivity(), UploadCallback {
     }
 
     private fun enableSelfieUpload() {
-        pressToUploadSelfie.isEnabled = true
-        pressToUploadSelfie.isClickable = true
         pressToUploadSelfie.setOnClickListener {
             uploadSelfie()
         }

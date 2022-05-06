@@ -207,4 +207,6 @@
     <string name="bubble_low_light">Low lighting condition detected</string>
 
     <string name="blink_to_selfie">Blink please ;)</string>
+
+    <string name="pls_upload_doc">Please upload document first</string>
 </resources>
