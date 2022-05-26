@@ -1,21 +1,21 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="LabelScanInfo">
-        <item name="android:textColor">@color/grey13</item>
+    <style name="LabelScanInfoSocure">
+        <item name="android:textColor">@color/grey13_socure</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">60sp</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
 
-    <style name="bookingActivityTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="bookingActivityThemeSocure" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/orange_socure</item>
         <item name="colorPrimaryDark">@color/black_socure</item>
         <item name="colorAccent">@color/white_socure</item>
         <item name="colorSurface">@color/white_socure</item>
     </style>
 
-    <style name="WideDialog" parent="Base.Theme.AppCompat.Dialog">
+    <style name="WideDialogSocure" parent="Base.Theme.AppCompat.Dialog">
         <item name="android:windowMinWidthMajor">90%</item>
         <item name="android:windowMinWidthMinor">90%</item>
     </style>
@@ -23,20 +23,20 @@
 
     //**********CONFIGURABLE
 
-    <style name="ScannerBackIcon">
+    <style name="ScannerBackIconSocure">
         <item name="srcCompat">@drawable/ic_arrow_left_socure</item>
         <item name="android:padding">8dp</item>
         <item name="android:tint">@color/white_socure</item>
     </style>
 
-    <style name="ScannerTitle">
+    <style name="ScannerTitleSocure">
         <item name="android:textSize">20sp</item>
         <item name="android:padding">8dp</item>
         <item name="android:fontFamily">@font/proxima_nova_regular</item>
         <item name="android:textColor">@color/white_socure</item>
     </style>
 
-    <style name="ScannerTitleStep">
+    <style name="ScannerTitleStepSocure">
         <item name="android:textSize">10sp</item>
         <item name="android:padding">8dp</item>
         <item name="android:textStyle">italic</item>
@@ -44,72 +44,72 @@
         <item name="android:textColor">@color/orange_socure</item>
     </style>
 
-    <style name="ScannerFlashIcon">
-        <item name="srcCompat">@drawable/ic_disabled_flash</item>
+    <style name="ScannerFlashIconSocure">
+        <item name="srcCompat">@drawable/ic_disabled_flash_socure</item>
         <item name="android:padding">8dp</item>
         <item name="android:tint">@color/white_socure</item>
     </style>
 
-    <style name="ScannerFlashIconOn">
+    <style name="ScannerFlashIconOnSocure">
         <item name="srcCompat">@drawable/ic_flash_socure</item>
         <item name="android:padding">8dp</item>
         <item name="android:tint">@color/white_socure</item>
     </style>
 
-    <style name="ScannerTabStyle">
+    <style name="ScannerTabStyleSocure">
         <item name="tabBackground">@android:color/transparent</item>
         <item name="tabSelectedTextColor">@color/orange_socure</item>
         <item name="tabIndicatorColor">@color/orange_socure</item>
         <item name="android:fontFamily">@font/proxima_nova_bold</item>
     </style>
 
-    <style name="ScannerTabItemStyle">
+    <style name="ScannerTabItemStyleSocure">
         <item name="android:fontFamily">@font/proxima_nova_bold</item>
     </style>
 
-    <style name="PassportScannerMaskStyle">
+    <style name="PassportScannerMaskStyleSocure">
         <item name="android:background">@drawable/white_border_background_socure</item>
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="PassportScannerMaskBottomStyle">
+    <style name="PassportScannerMaskBottomStyleSocure">
         <item name="android:background">@drawable/white_border_background_socure</item>
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="PassportScannerMaskBackgroundStyle">
+    <style name="PassportScannerMaskBackgroundStyleSocure">
         <item name="android:background">@color/mask_background_socure</item>
     </style>
     <!--<item name="android:background">@drawable/cropper_background</item>-->
-    <style name="LicenseScannerMaskStyle">
+    <style name="LicenseScannerMaskStyleSocure">
         <item name="android:background">@drawable/white_border_background_socure</item>
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="LicenseScannerMaskStyleEdgeDetected">
+    <style name="LicenseScannerMaskStyleEdgeDetectedSocure">
         <item name="android:background">@drawable/white_border_background_thick_socure</item>
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="LicenseScannerMaskStyleEmpty">
+    <style name="LicenseScannerMaskStyleEmptySocure">
         <item name="android:orientation">vertical</item>
     </style>
-    <style name="LicenseScannerMaskBackgroundStyle">
+    <style name="LicenseScannerMaskBackgroundStyleSocure">
         <item name="android:background">@color/mask_background_socure</item>
     </style>
 
-    <style name="LicenseScannerMaskTextStyle">
+    <style name="LicenseScannerMaskTextStyleSocure">
         <item name="android:textColor">@color/white_socure</item>
         <item name="android:fontFamily">@font/proxima_nova_regular</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="ManualButtonStyle">
+    <style name="ManualButtonStyleSocure">
         <item name="android:src">@drawable/ic_camera_button_socure</item>
     </style>
 
-    <style name="CountDownPhotoCaptureStyle">
+    <style name="CountDownPhotoCaptureStyleSocure">
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/white_socure</item>
         <item name="android:fontFamily">@font/proxima_nova_regular</item>
@@ -117,55 +117,55 @@
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="MySpinKitStyle" parent="@style/SpinKitView.Large.FadingCircle">
+    <style name="MySpinKitStyleSocure" parent="@style/SpinKitView.Large.FadingCircle">
         <item name="SpinKit_Color">@color/orange_socure</item>
     </style>
 
-    <style name="HelpBubbleStyle">
+    <style name="HelpBubbleStyleSocure">
         <item name="bl_bubbleColor">@color/green_socure</item>
         <item name="android:visibility">visible</item>
     </style>
 
-    <style name="HelpBubbleFont">
+    <style name="HelpBubbleFontSocure">
         <item name="android:fontFamily">@font/proxima_nova_regular</item>
         <item name="android:textColor">@color/white_socure</item>
         <item name="android:textSize">14sp</item>
     </style>
-    <style name="NoBarCodeStyle">
+    <style name="NoBarCodeStyleSocure">
         <item name="android:background">@color/red_socure</item>
         <item name="android:textSize">11sp</item>
     </style>
-    <style name="NoBarCodeTextStyle">
+    <style name="NoBarCodeTextStyleSocure">
         <item name="android:textColor">@color/white_socure</item>
         <item name="android:textSize">11sp</item>
     </style>
-    <style name="NoBarCodeButtonStyle">
+    <style name="NoBarCodeButtonStyleSocure">
         <item name="android:textColor">@color/white_socure</item>
         <item name="android:textSize">11sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="scannerBG">
+    <style name="scannerBGSocure">
         <item name="android:background">@color/transparent_scanner2_socure</item>
     </style>
-    <style name="ScannerStatusBarCapture">
+    <style name="ScannerStatusBarCaptureSocure">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white_socure</item>
         <item name="android:fontFamily">@font/proxima_nova_bold</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="ArrowUpIcon">
+    <style name="ArrowUpIconSocure">
         <item name="android:padding">8dp</item>
         <item name="android:src">@drawable/ic_arrow_up_socure</item>
     </style>
 
-    <style name="LicenseBackHelpTitleStyle">
+    <style name="LicenseBackHelpTitleStyleSocure">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/proxima_nova_bold</item>
         <item name="android:textColor">@color/black_socure</item>
     </style>
 
-    <style name="LicenseBackHelpTextStyle">
+    <style name="LicenseBackHelpTextStyleSocure">
         <item name="android:gravity">center</item>
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">4sp</item>
@@ -173,17 +173,17 @@
         <item name="android:textColor">@color/black_socure</item>
     </style>
 
-    <style name="LicenseBackHelpImage">
-        <item name="android:src">@drawable/license_mask_back</item>
+    <style name="LicenseBackHelpImageSocure">
+        <item name="android:src">@drawable/license_mask_back_socure</item>
     </style>
 
-    <style name="LicenseFrontHelpTitleStyle">
+    <style name="LicenseFrontHelpTitleStyleSocure">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/proxima_nova_bold</item>
         <item name="android:textColor">@color/black_socure</item>
     </style>
 
-    <style name="LicenseFrontHelpTextStyle">
+    <style name="LicenseFrontHelpTextStyleSocure">
         <item name="android:gravity">center</item>
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">4sp</item>
@@ -191,17 +191,17 @@
         <item name="android:textColor">@color/black_socure</item>
     </style>
 
-    <style name="LicenseFrontHelpImage">
-        <item name="android:src">@drawable/license_mask_front</item>
+    <style name="LicenseFrontHelpImageSocure">
+        <item name="android:src">@drawable/license_mask_front_socure</item>
     </style>
 
-    <style name="PassportHelpTitleStyle">
+    <style name="PassportHelpTitleStyleSocure">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/proxima_nova_bold</item>
         <item name="android:textColor">@color/black_socure</item>
     </style>
 
-    <style name="PassportHelpTextStyle">
+    <style name="PassportHelpTextStyleSocure">
         <item name="android:gravity">center</item>
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">4sp</item>
@@ -209,17 +209,17 @@
         <item name="android:textColor">@color/black_socure</item>
     </style>
 
-    <style name="PassportHelpImage">
-        <item name="android:background">@drawable/passport_mask</item>
+    <style name="PassportHelpImageSocure">
+        <item name="android:background">@drawable/passport_mask_socure</item>
     </style>
 
-    <style name="SelfieHelpTitleStyle">
+    <style name="SelfieHelpTitleStyleSocure">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/proxima_nova_bold</item>
         <item name="android:textColor">@color/black_socure</item>
     </style>
 
-    <style name="SelfieHelpTextStyle">
+    <style name="SelfieHelpTextStyleSocure">
         <item name="android:gravity">center</item>
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">4sp</item>
@@ -227,25 +227,25 @@
         <item name="android:textColor">@color/black_socure</item>
     </style>
 
-    <style name="SelfieHelpImage">
+    <style name="SelfieHelpImageSocure">
         <item name="android:background">@drawable/ic_selfie_closer_socure</item>
     </style>
 
-    <style name="CardViewHelpStyle">
+    <style name="CardViewHelpStyleSocure">
         <item name="android:background">@drawable/bottom_card_background_socure</item>
     </style>
 
-    <style name="UploadScreen">
+    <style name="UploadScreenSocure">
         <item name="android:background">@color/background_socure</item>
     </style>
 
-    <style name="ProgressBarValueStyle">
+    <style name="ProgressBarValueStyleSocure">
         <item name="android:fontFamily">@font/proxima_nova_bold</item>
         <item name="android:textColor">@color/black_socure</item>
         <item name="android:textSize">31sp</item>
     </style>
 
-    <style name="ProgressBarStyle" parent="Widget.AppCompat.ProgressBar.Horizontal">
+    <style name="ProgressBarStyleSocure" parent="Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progress">1</item>
         <item name="android:progressBackgroundTint">@color/grey_socure</item>
         <item name="android:textStyle">bold</item>
@@ -254,22 +254,22 @@
         <item name="android:secondaryProgressTintMode">screen</item>
     </style>
 
-    <style name="PreviewStart">
+    <style name="PreviewStartSocure">
         <item name="android:fontFamily">@font/proxima_nova_bold</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">18sp</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="PreviewStart.AcceptImage">
-        <item name="android:background">@drawable/button_yes_selector</item>
+    <style name="PreviewStartSocure.AcceptImageSocure">
+        <item name="android:background">@drawable/button_yes_selector_socure</item>
     </style>
 
-    <style name="PreviewStart.CancelImage">
-        <item name="android:background">@drawable/button_no_selector</item>
+    <style name="PreviewStartSocure.CancelImageSocure">
+        <item name="android:background">@drawable/button_no_selector_socure</item>
     </style>
 
-    <style name="PreviewStart.InformationExtracted">
+    <style name="PreviewStartSocure.InformationExtractedSocure">
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">36sp</item>
         <item name="android:gravity">center</item>
@@ -280,7 +280,7 @@
         <item name="android:indeterminateTint">@color/orange_socure</item>
     </style>
 
-    <style name="SelfieMask">
+    <style name="SelfieMaskSocure">
         <item name="android:src">@drawable/ic_selfie_mask_socure</item>
     </style>
     //****** CONFIGURABLE
