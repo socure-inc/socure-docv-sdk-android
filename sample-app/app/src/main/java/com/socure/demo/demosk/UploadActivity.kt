@@ -14,6 +14,7 @@ import com.socure.idplus.interfaces.Interfaces.UploadCallback
 import com.socure.idplus.model.ScanResult
 import com.socure.idplus.model.UploadResult
 import com.socure.idplus.upload.ImageUploader
+import com.socure.idplus.util.Constants
 import com.socure.idplus.util.ImageUtil.toBitmap
 import com.socure.idplus.util.mergeBooleanWithAnd
 import kotlinx.android.synthetic.main.activity_main.backImage
@@ -70,6 +71,22 @@ class UploadActivity : AppCompatActivity(), UploadCallback {
             uploadDocuments()
         }
 
+        pressToUploadDoc.setOnClickListener {
+            simpleProgressBar.visibility = View.VISIBLE
+            val uploadUrl =
+                if (BuildConfig.DEBUG) resources.getString(R.string.dbg_upload_url) else resources.getString(
+                    R.string.rel_upload_url
+                )
+            imageUploader = ImageUploader(this.baseContext, socurePublicKey, uploadUrl)
+            imageUploader?.imageUploader(this.baseContext)
+
+            uploadDocumentsAlone()
+        }
+
+        pressToUploadSelfie.setOnClickListener {
+            Toast.makeText(this, resources.getString(R.string.pls_upload_doc), Toast.LENGTH_SHORT).show()
+        }
+
         uploadSuccessLiveData.postValue(false)
 
         mergeBooleanWithAnd(uploadSuccessLiveData).observe(this, androidx.lifecycle.Observer
@@ -81,14 +98,75 @@ class UploadActivity : AppCompatActivity(), UploadCallback {
                     uploadResponseValue.text = "Upload Response Value: $responseText"
                     simpleProgressBar.visibility = View.GONE
                     Log.d(TAG, "Success response: $responseText")
+
+                    enableSelfieUpload()
                 }
             }
         })
     }
 
+    private fun enableSelfieUpload() {
+        pressToUploadSelfie.setOnClickListener {
+            uploadSelfie()
+        }
+    }
+
+    private fun uploadSelfie() {
+        simpleProgressBar.visibility = View.VISIBLE
+        imageUploader?.uploadSelfie(
+            object : UploadCallback {
+                override fun onDocumentUploadError(error: SocureSdkError?) {
+                    Log.e(TAG, "onDocumentUploadError: ${error?.toJSON()}")
+                    var cancelCause = "onDocumentUploadError"
+                    error?.let { cancelCause = it.toJSON() }
+                    Toast.makeText(this@UploadActivity, cancelCause, Toast.LENGTH_SHORT)
+                        .show()
+                    uploadSuccessLiveData.postValue(false)
+                    showError("Upload Error")
+                }
+
+                override fun onSocurePublicKeyError(error: SocureSdkError?) {
+                    Toast.makeText(
+                        this@UploadActivity,
+                        "onDocumentUploadError: " + error.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show();
+                    Log.e(TAG, "onSocurePublicKeyError: ${error?.toJSON()}")
+                    uploadSuccessLiveData.postValue(false)
+                    showError("Socure Public Key Error")
+                }
+
+                override fun documentUploadFinished(uploadResult: UploadResult?) {
+                    val responseText = Gson().toJson(SDKAppDataPublic.uploadResult)
+                    uploadResponseState.text = "Selfie Upload Response State: Success"
+                    uploadResponseValue.text = "Selfie Upload Response Value: $responseText"
+                    simpleProgressBar.visibility = View.GONE
+                    Log.d(TAG, "Success response: $responseText")
+                    Toast.makeText(
+                        this@UploadActivity,
+                        "Selfie uploaded successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            },
+            SDKAppDataPublic.uploadResult?.uuid,
+            SDKAppDataPublic.selfieScanResult?.imageData,
+            getDocType()
+        )
+    }
+
+    private fun getDocType(): String {
+        return when (SDKAppDataPublic.successfulScanningResult?.documentType) {
+            ScanResult.DocumentType.PASSPORT -> {
+                Constants.DOCUMENTTYPE_PASSPORT
+            }
+            else -> {
+                Constants.DOCUMENTTYPE_LICENSE
+            }
+        }
+    }
+
     private fun uploadDocuments() {
-
-
         if (SDKAppDataPublic.successfulScanningResult?.passportImage==null && SDKAppDataPublic.successfulScanningResult?.licenseFrontImage == null) {
             Toast.makeText(this, "Front cannot be null", Toast.LENGTH_LONG).show()
         } else
@@ -128,6 +206,25 @@ class UploadActivity : AppCompatActivity(), UploadCallback {
                         SDKAppDataPublic.successfulScanningResult?.licenseBackImage
                     )
                 }
+            }
+    }
+
+
+    private fun uploadDocumentsAlone() {
+        if (SDKAppDataPublic.successfulScanningResult?.passportImage == null && SDKAppDataPublic.successfulScanningResult?.licenseFrontImage == null) {
+            Toast.makeText(this, "Front cannot be null", Toast.LENGTH_LONG).show()
+        } else
+            if (SDKAppDataPublic.successfulScanningResult?.documentType == ScanResult.DocumentType.PASSPORT) {
+                imageUploader?.uploadPassport(
+                    this,
+                    SDKAppDataPublic.successfulScanningResult?.passportImage
+                )
+            } else {
+                imageUploader?.uploadLicense(
+                    this,
+                    SDKAppDataPublic.successfulScanningResult?.licenseFrontImage,
+                    SDKAppDataPublic.successfulScanningResult?.licenseBackImage
+                )
             }
     }
 

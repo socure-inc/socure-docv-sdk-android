@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/white_socure"
     tools:context=".MainActivity">
 
 
@@ -36,7 +36,7 @@
                     android:text="Scan ID"
                     android:textAllCaps="false"
                     android:layout_marginEnd="12dp"
-                    android:background="@color/orange"
+                    android:background="@color/orange_socure"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/scanPassportButton"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +48,7 @@
                     android:layout_marginStart="12dp"
                     android:textAllCaps="false"
                     android:text="Scan Passport"
-                    android:background="@color/orange"
+                    android:background="@color/orange_socure"
                     app:layout_constraintStart_toEndOf="@id/scanIDButton"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -70,7 +70,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:text="Documents images"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_socure"
                     android:textSize="24sp" />
 
                 <androidx.constraintlayout.widget.Guideline
@@ -111,7 +111,7 @@
                     android:id="@+id/frontImageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_socure"
                     android:layout_weight="1"
                     android:text="Front"
                     android:textAlignment="center"
@@ -123,7 +123,7 @@
                     android:id="@+id/backImageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_socure"
                     android:layout_weight="1"
                     android:text="Back"
                     android:textAlignment="center"
@@ -150,9 +150,9 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="@color/white_socure"
                     android:text="Press to take Selfie"
-                    android:background="@color/orange" />
+                    android:background="@color/orange_socure" />
 
                 <TextView
                     android:id="@+id/selfieTextView"
@@ -163,7 +163,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:text="Selfie Image"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_socure"
                     android:textSize="24sp" />
 
                 <androidx.constraintlayout.widget.Guideline
@@ -197,7 +197,7 @@
                     android:id="@+id/selfieImageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_socure"
                     android:layout_weight="1"
                     android:textAlignment="center"
                     app:layout_constraintTop_toBottomOf="@id/selfieImage"
@@ -218,9 +218,9 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="@color/white_socure"
                     android:text="Upload"
-                    android:background="@color/orange" />
+                    android:background="@color/orange_socure" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

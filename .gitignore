@@ -31,3 +31,4 @@ captures/
 
 .externalNativeBuild
 SocureSDK/BareBones/app/noDeviceRisk
+keystore/
