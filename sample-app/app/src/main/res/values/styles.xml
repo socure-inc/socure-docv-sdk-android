@@ -144,7 +144,7 @@
         <item name="android:textSize">11sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="scannerBGSocure">
+    <style name="scannerBGSocureSocure">
         <item name="android:background">@color/transparent_scanner2_socure</item>
     </style>
     <style name="ScannerStatusBarCaptureSocure">
