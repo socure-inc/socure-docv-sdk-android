@@ -11,8 +11,8 @@ android {
         applicationId "com.socure.demo.demosk"
         minSdkVersion 22
         targetSdkVersion 32
-        versionCode 2013
-        versionName "2.0.13"
+        versionCode 2014
+        versionName "2.0.14"
     }
 
     def localProperties = new Properties()
@@ -75,7 +75,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
 
     // socure document verification sdk dependency
-    implementation 'com.github.socure-inc:android-sdk:akadln.ldlJSD.Dsllk.jllskdj'
+    implementation 'com.github.socure-inc:android-sdk:snjdns.2014.dnasdn.kasl.pre-rel.0'
 }
 
 
