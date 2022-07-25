@@ -11,7 +11,7 @@
     <string name="dbg_upload_url">https://stage-upload-4d38.socure.com</string>
 
     <!-- put your Socure Public Key below -->
-    <string name="socurePublicKey" translatable="false">fffb3d0d-fd6d-4e96-96a5-88ac1ae669cd</string> <!-- TODO : this needs to be done for building and SDK use -->
+    <string name="socurePublicKey" translatable="false">REPLACE ME WITH YOUR SOCURE PUBLIC KEY</string> <!-- TODO : this needs to be done for building and SDK use -->
 
 
     <string name="hello_first_fragment">Hello first fragment</string>
