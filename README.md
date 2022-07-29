@@ -24,7 +24,7 @@ SocureDocVHelper.getIntent(context, socure-api-key, config)
 Before you can use the Predictive DocV Android SDK v3, you must perform the following steps:
 
 - [Add SDK dependencies](#add-sdk-dependencies)
-- [Request camera permissions](#camera-permissions)
+- [Camera permissions](#camera-permissions)
 - [Launch Socure DocV SDK](#launch-socure-docv-sdk)
 
 ### Add SDK dependencies
