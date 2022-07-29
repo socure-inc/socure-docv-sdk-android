@@ -1,92 +1,82 @@
-# Document Verification Android SDK
+# Predictive DocV Android SDK v3
 
-The Document Verification Android SDK provides a framework to add image capture and upload services to your native Android applications. The SDK supports image capture for both Android and iOS. This guide covers only Android.
+The Predictive Document Verification (Predictive DocV) Android SDK v3 provides a framework to add image capture and upload services to your mobile application. 
 
 ## Minimum Requirements
 
-| Feature                          | Minimum Requirements |
-|----------------------------------|----------------------|
-| Android SDK                      | `minSdkVersion 22`   |
-| Document and Selfie Auto Capture | Android 8 and above  |
+- Android SDK Version 22 (OS Version 5.1) and later
+- Android SDK is compiled with `compileSdkVersion 32` and Java 11
 
-### OkHttp3 and Retrofit dependencies
+## Configuration and integration
 
-| Feature  | Version |
-|----------|---------|
-| okHttp   | 4.9.3   |
-| retrofit | 2.9.0   |
-
+The Predictive DocV Android SDK v3 allows integration as simple as writing a single line of code:
 ```
-def retrofitVersion = '2.9.0'
-implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-
-def okHttpVersion = '4.9.3'
-implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
-implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+SocureDocVHelper.getIntent(context, socure-api-key, config)
 ```
 
-## Installation
+| Argument           | Description                                                                                                                                                                                                                                                                                                       |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SocureDocVHelper` | A framework helper class.                                                                                                                                                                                                                                                                                         |
+| `socure-api-key`   | The unique SDK key obtained from Admin Dashboard. For more information on SDK keys, see the Admin Dashboard User Guide.                                                                                                                          |
+| `context`          | Activity context                                                                                                                                                                                                                                                                                                  |
+| `config`           | An optional JSON string or null value that specifies a custom flow. The `flow_1` value specifies the name of the flow (created in Admin Dashboard) that the Predictive DocV SDK should use.  <br /> <br />`{"flow": {"name": "flow_1"}}` <br /> <br />If the value is `null`, the Predictive DocV SDK will fetch Socure's default flow. |
 
-To install the DocV Android SDK, you must perform the following steps:
- - [Add Socure to the build.gradle](#add-socure-to-the-buildgradle)
- - [Update permissions](#update-permissions)
- - [Add API keys](#add-api-keys)
+Before you can use the Predictive DocV Android SDK v3, you must perform the following steps:
 
-### Add Socure to the build.gradle
+- [Add SDK dependencies](#add-sdk-dependencies)
+- [Camera permissions](#camera-permissions)
+- [Launch Socure DocV SDK](#launch-socure-docv-sdk)
 
-You must add the following to your `build.gradle`:
+### Add SDK dependencies
 
-- Add the maven URL in the root/project level `build.gradle`:
+In your root `build.gradle` file, at the end of the `allprojects` > `repositories` section, add the Socure DocV SDK Maven repository. 
 
-```
-(NOT IN THE `buildscript` code block above. allprojects is a sibling to build script)
-
-
+```kotlin {4}
 allprojects {
-  	  	repositories {
-      	 		 .......
-
-       			 maven {
-           				 url "https://jitpack.io"
-     		 	 }
-    		}
-}
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
+        }
+    }
 ```
 
-- Add the following to the `build.gradle` of the module/library that uses the framework:
+In your module level `build.gradle` file, add the following Socure DocV SDK dependency:
+
+```kotlin {2}
+ dependencies {
+      implementation 'com.github.socure-inc:socure-docv:x.y.z'
+ }
+ ```
+
+### Camera permissions
+
+The Predictive DocV Android SDK requires camera permission to capture identity documents. Upon the first invocation of the SDK, your app will request camera permission from the user.
+
+**Note**: We recommend you check for camera permissions before calling the Socure DocV SDK’s launch API. 
+
+#### Required permissions
+
+Ensure that your app manifest has been set up properly to request the following required permissions:
 
 ```
-dependencies {
-   		 implementation 'com.github.socure-inc:android-sdk:2.0.13'
-}
-```
-
-### Update permissions
-
-Make the following permission updates for Android in the Android.manifest:
-
-```
-<uses-permission android:name="android.permission.CAMERA"></uses-permission>
-<uses-permission android:name="android.permission.INTERNET"></uses-permission>
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-<uses-feature android:name="android.hardware.camera.autofocus" />
-<uses-feature android:name="android.hardware.camera.flash" android:required="false" />
 <uses-feature android:name="android.hardware.camera" />
-<uses-permission android:name="android.permission.VIBRATE" />
-```
 
-### Add API keys
-
-Use the Admin Dashboard to find the Socure public key.
-
-- Add the key to your application:
+<!-- Declare permissions -->
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
 ```
-<string name="socurePublicKey" translatable="false">YOUR_KEY_HERE</string>
+
+### Launch Socure DocV SDK
+
+To launch the Socure DocV SDK, call the launch function using `ActivityResultLauncher`. 
+
 ```
-- Add the API key to `string.xml` as a resource.
+val startForResult: ActivityResultLauncher<Intent> = registerForActivityResult(...)
+...
+startForResult.launch(SocureDocVHelper.getIntent(context, socure-api-key, config))
 
-### Configuration and usage
+```
 
-For instructions on how to configure the SDK, see the [Android SDK documentation](https://developer.socure.com/docs/sdks/docv/android-sdk).
+Once the Socure DocV SDK is successfully launched, you will be able to set up a listener for Callback Events and customize the most aspect of the interface. For more information, see the [Android SDK documentation](https://developer.socure.com/docs/sdks/docv/android-sdk/android-sdk-v3/) on DevHub. 
