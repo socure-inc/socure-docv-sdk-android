@@ -10,8 +10,8 @@ android {
         applicationId "com.socure.docv.sdk.sample"
         minSdk 22
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "3.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,7 +38,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    def docV_version = "3.0.0"
+    def docV_version = "3.0.1"
     implementation "com.github.socure-inc:socure-docv:$docV_version"
 
     testImplementation 'junit:junit:4.13.2'
