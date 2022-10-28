@@ -22,6 +22,8 @@ import com.socure.idplus.scanner.license.LicenseScannerActivity
 import com.socure.idplus.scanner.passport.PassportScannerActivity
 import com.socure.idplus.scanner.selfie.SelfieActivity
 import com.socure.idplus.util.ImageUtil.toBitmap
+import com.socure.idplus.util.clearPubKey
+import com.socure.idplus.util.clearToken
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
@@ -38,6 +40,9 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Please set the SDK public key by calling this function if it's not set via the strings.xml
+        // SDKAppDataPublic.setSocureSdkKey("REPLACE ME WITH YOUR SOCURE PUBLIC KEY")
 
         scanIDButton.setOnClickListener {
             val passingIntent = Intent(this@MainActivity, LicenseScannerActivity::class.java)
@@ -77,12 +82,17 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
         }
 
         pressGoToUpload.setOnClickListener {
-            val passingIntent = Intent(this@MainActivity, UploadActivity::class.java)
-            passingIntent.putExtra(
-                resources.getString(R.string.socurePublicKey),
-                applicationContext.getString(R.string.socurePublicKey)
-            )
-            startActivityForResult(passingIntent, UPLOAD_ACTIVITY)
+            startActivityForResult(Intent(this@MainActivity, UploadActivity::class.java), UPLOAD_ACTIVITY)
+        }
+
+        btn_token.setOnClickListener {
+            Log.d(TAG, "Clicked btn_token")
+            clearToken()
+        }
+
+        btn_pub.setOnClickListener {
+            Log.d(TAG, "Clicked btn_pub")
+            clearPubKey()
         }
 
         Dexter.withContext(this)
@@ -264,7 +274,6 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
     }
 
     override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
-
         if (report?.areAllPermissionsGranted() == true) {
             allPermissionChecked = true
         } else {
