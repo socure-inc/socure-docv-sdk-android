@@ -13,7 +13,7 @@ android {
         applicationId "com.socure.demo.demosk"
         minSdkVersion 22
         targetSdkVersion 32
-        versionCode 2017
+        versionCode 2019
         versionName "2.1.0"
     }
 
