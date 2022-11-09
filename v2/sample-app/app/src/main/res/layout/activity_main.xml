@@ -20,40 +20,18 @@
             android:orientation="vertical"
             android:layout_height="0dp">
 
-            <LinearLayout
-                android:id="@+id/clean_local"
+            <Button
+                android:id="@+id/btn_clean_session_consent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <Button
-                    android:id="@+id/btn_token"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Clear Token"
-                    android:textAllCaps="false"
-                    android:layout_marginEnd="12dp"
-                    android:background="@color/black_socure"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/scanPassportButton"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <Button
-                    android:id="@+id/btn_pub"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Clear Pub Key"
-                    android:textAllCaps="false"
-                    android:layout_marginEnd="12dp"
-                    android:background="@color/black_socure"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/scanPassportButton"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </LinearLayout>
+                android:text="Clear Session/Consent Data"
+                android:textAllCaps="false"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@color/red_socure"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/scanPassportButton"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/documents_to_send_constraint"

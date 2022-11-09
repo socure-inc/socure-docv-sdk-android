@@ -9,6 +9,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.crashlytics.ktx.setCustomKeys
+import com.google.firebase.ktx.Firebase
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -22,8 +25,7 @@ import com.socure.idplus.scanner.license.LicenseScannerActivity
 import com.socure.idplus.scanner.passport.PassportScannerActivity
 import com.socure.idplus.scanner.selfie.SelfieActivity
 import com.socure.idplus.util.ImageUtil.toBitmap
-import com.socure.idplus.util.clearPubKey
-import com.socure.idplus.util.clearToken
+import com.socure.idplus.util.clearSession
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
@@ -85,14 +87,9 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
             startActivityForResult(Intent(this@MainActivity, UploadActivity::class.java), UPLOAD_ACTIVITY)
         }
 
-        btn_token.setOnClickListener {
-            Log.d(TAG, "Clicked btn_token")
-            clearToken()
-        }
-
-        btn_pub.setOnClickListener {
-            Log.d(TAG, "Clicked btn_pub")
-            clearPubKey()
+        btn_clean_session_consent.setOnClickListener {
+            Log.d(TAG, "Clicked btn_clean_session_consent")
+            clearSession()
         }
 
         Dexter.withContext(this)
@@ -100,6 +97,15 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
             .withListener(this)
             .onSameThread()
             .check()
+    }
+
+    private fun setupCrashlytics() {
+        val crashlytics = Firebase.crashlytics
+        crashlytics.setUserId(getString(R.string.socurePublicKey))
+
+        crashlytics.setCustomKeys {
+            key("sdk_version", com.socure.idplus.sdk.release.BuildConfig.SDK_VERSION)
+        }
     }
 
     private fun showMessageOKCancel(okListener: DialogInterface.OnClickListener) {
