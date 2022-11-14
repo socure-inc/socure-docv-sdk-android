@@ -25,7 +25,6 @@ import com.socure.idplus.scanner.license.LicenseScannerActivity
 import com.socure.idplus.scanner.passport.PassportScannerActivity
 import com.socure.idplus.scanner.selfie.SelfieActivity
 import com.socure.idplus.util.ImageUtil.toBitmap
-import com.socure.idplus.util.clearSession
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
@@ -85,11 +84,6 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
 
         pressGoToUpload.setOnClickListener {
             startActivityForResult(Intent(this@MainActivity, UploadActivity::class.java), UPLOAD_ACTIVITY)
-        }
-
-        btn_clean_session_consent.setOnClickListener {
-            Log.d(TAG, "Clicked btn_clean_session_consent")
-            clearSession()
         }
 
         Dexter.withContext(this)

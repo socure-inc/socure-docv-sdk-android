@@ -20,19 +20,6 @@
             android:orientation="vertical"
             android:layout_height="0dp">
 
-            <Button
-                android:id="@+id/btn_clean_session_consent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Clear Session/Consent Data"
-                android:textAllCaps="false"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:background="@color/red_socure"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/scanPassportButton"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/documents_to_send_constraint"
                 android:layout_width="match_parent"
