@@ -14,7 +14,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 32
         versionCode 2020
-        versionName "2.1.0"
+        versionName "2.1.1"
     }
 
     def localProperties = new Properties()
