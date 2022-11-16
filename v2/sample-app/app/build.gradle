@@ -1,8 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -75,8 +73,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'com.karumi:dexter:6.2.1'
     implementation 'com.google.code.gson:gson:2.9.0'
-    implementation platform('com.google.firebase:firebase-bom:31.0.2')
-    implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
     // socure document verification sdk dependency
     implementation 'com.github.socure-inc:android-sdk:2.1.1'

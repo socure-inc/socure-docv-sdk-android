@@ -9,9 +9,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.crashlytics.ktx.crashlytics
-import com.google.firebase.crashlytics.ktx.setCustomKeys
-import com.google.firebase.ktx.Firebase
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -91,15 +88,6 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
             .withListener(this)
             .onSameThread()
             .check()
-    }
-
-    private fun setupCrashlytics() {
-        val crashlytics = Firebase.crashlytics
-        crashlytics.setUserId(getString(R.string.socurePublicKey))
-
-        crashlytics.setCustomKeys {
-            key("sdk_version", com.socure.idplus.sdk.release.BuildConfig.SDK_VERSION)
-        }
     }
 
     private fun showMessageOKCancel(okListener: DialogInterface.OnClickListener) {
