@@ -283,6 +283,21 @@
     <style name="SelfieMaskSocure">
         <item name="android:src">@drawable/ic_selfie_mask_socure</item>
     </style>
+
+    // consent feature related styles
+    <style name="ConsentAgreeButtonSocure" parent="Widget.AppCompat.Button.Borderless">
+        <item name="fontFamily">@font/proxima_nova_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/btn_socure_orange_bg</item>
+        <item name="android:textColor">@color/socure_white</item>
+    </style>
+
+    <style name="ConsentDisAgreeButtonSocure" parent="Widget.AppCompat.Button.Borderless">
+        <item name="fontFamily">@font/proxima_nova_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/btn_socure_orange_corner</item>
+        <item name="android:textColor">@color/socure_title_text</item>
+    </style>
     //****** CONFIGURABLE
 
 </resources>

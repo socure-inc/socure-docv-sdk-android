@@ -7,9 +7,6 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="rel_upload_url">https://upload.socure.com</string>
-    <string name="dbg_upload_url">https://stage-upload-4d38.socure.com</string>
-
     <!-- put your Socure Public Key below -->
     <string name="socurePublicKey" translatable="false">REPLACE ME WITH YOUR SOCURE PUBLIC KEY</string> <!-- TODO : this needs to be done for building and SDK use -->
 

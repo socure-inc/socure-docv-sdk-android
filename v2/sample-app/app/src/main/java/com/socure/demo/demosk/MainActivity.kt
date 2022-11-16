@@ -39,6 +39,9 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Please set the SDK public key by calling this function if it's not set via the strings.xml
+        // SDKAppDataPublic.setSocureSdkKey("REPLACE ME WITH YOUR SOCURE PUBLIC KEY")
+
         scanIDButton.setOnClickListener {
             val passingIntent = Intent(this@MainActivity, LicenseScannerActivity::class.java)
             passingIntent.putExtra(status, 0)
@@ -77,12 +80,7 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
         }
 
         pressGoToUpload.setOnClickListener {
-            val passingIntent = Intent(this@MainActivity, UploadActivity::class.java)
-            passingIntent.putExtra(
-                resources.getString(R.string.socurePublicKey),
-                applicationContext.getString(R.string.socurePublicKey)
-            )
-            startActivityForResult(passingIntent, UPLOAD_ACTIVITY)
+            startActivityForResult(Intent(this@MainActivity, UploadActivity::class.java), UPLOAD_ACTIVITY)
         }
 
         Dexter.withContext(this)
@@ -264,7 +262,6 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
     }
 
     override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
-
         if (report?.areAllPermissionsGranted() == true) {
             allPermissionChecked = true
         } else {
