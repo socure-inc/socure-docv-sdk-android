@@ -79,7 +79,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
     // socure document verification sdk dependency
-    implementation 'com.github.socure-inc:android-sdk:2.1.1.pre-release.0'
+    implementation 'com.github.socure-inc:android-sdk:2.1.1'
 }
 
 
