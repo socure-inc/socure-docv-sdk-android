@@ -53,7 +53,7 @@ Add the following to the `build.gradle` of the module/library that uses the fram
 
 ```
 dependencies {
-   		 implementation 'com.github.socure-inc:android-sdk:2.0.13'
+   		 implementation 'com.github.socure-inc:android-sdk:2.1.1'
 }
 ```
 
