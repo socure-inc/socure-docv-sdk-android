@@ -11,8 +11,8 @@ android {
         applicationId "com.socure.demo.demosk"
         minSdkVersion 22
         targetSdkVersion 32
-        versionCode 2021
-        versionName "2.2.2"
+        versionCode 2022
+        versionName "2.3.0"
     }
 
     def localProperties = new Properties()
