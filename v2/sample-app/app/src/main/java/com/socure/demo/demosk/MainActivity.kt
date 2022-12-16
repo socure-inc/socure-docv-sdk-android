@@ -118,9 +118,21 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
                 val sessionId = data?.getStringExtra(KEY_SESSION_ID)
                 Log.d(TAG, "onActivityResult called after showConsent: sessionId: $sessionId, errorMessage: $errorMessage")
 
-                errorMessage?.let {
-                    Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
+                val toastMsg = sessionId?.let { id ->
+                    errorMessage?.let { msg ->
+                        "!SUCCESS: $id\n!!$msg"
+                    } ?: run {
+                        "SUCCESS: $id"
+                    }
+                } ?: run {
+                    errorMessage?.let { msg ->
+                        "!!!ERR: $msg"
+                    } ?: run {
+                        "!!!ERR: error msg not received"
+                    }
                 }
+
+                Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show()
             }
 
             if (requestCode == SCAN_PASSPORT_CODE) {
@@ -254,7 +266,7 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
     }
 
     companion object {
-        private const val SHOW_CONSENT_CODE = 100
+        private const val SHOW_CONSENT_CODE = 101
         private const val SCAN_PASSPORT_CODE = 200
         private const val SCAN_DRIVER_LICENSE_CODE = 300
         private const val SCAN_DRIVER_LICENSE_FRONT_CODE = 310
