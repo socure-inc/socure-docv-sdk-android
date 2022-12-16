@@ -122,11 +122,11 @@ class UploadActivity : AppCompatActivity(), UploadCallback {
     }
 
     companion object {
-        private val TAG = UploadActivity::class.java.simpleName
+        private const val TAG = "SDLT_UA"
     }
 
     override fun documentUploadFinished(uploadResult: UploadResult?) {
-        Log.i(TAG, "documentUploadFinished")
+        Log.i(TAG, "documentUploadFinished: $uploadResult")
         SDKAppDataPublic.uploadResult = uploadResult
         uploadSuccessLiveData.postValue(true)
     }

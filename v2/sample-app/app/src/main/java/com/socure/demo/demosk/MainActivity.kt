@@ -16,12 +16,15 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.socure.idplus.SDKAppDataPublic
 import com.socure.idplus.model.ScanResult
+import com.socure.idplus.scanner.consent.ConsentActivity
 import com.socure.idplus.scanner.license.LicenseBackScannerActivity
 import com.socure.idplus.scanner.license.LicenseFrontScannerActivity
 import com.socure.idplus.scanner.license.LicenseScannerActivity
 import com.socure.idplus.scanner.passport.PassportScannerActivity
 import com.socure.idplus.scanner.selfie.SelfieActivity
 import com.socure.idplus.util.ImageUtil.toBitmap
+import com.socure.idplus.util.KEY_ERROR
+import com.socure.idplus.util.KEY_SESSION_ID
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
@@ -41,6 +44,12 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
 
         // Please set the SDK public key by calling this function if it's not set via the strings.xml
         // SDKAppDataPublic.setSocureSdkKey("REPLACE ME WITH YOUR SOCURE PUBLIC KEY")
+
+        btn_show_consent.setOnClickListener {
+            Log.d(TAG, "Calling showConsent")
+            val intent = Intent(this@MainActivity, ConsentActivity::class.java)
+            startActivityForResult(intent, SHOW_CONSENT_CODE)
+        }
 
         scanIDButton.setOnClickListener {
             val passingIntent = Intent(this@MainActivity, LicenseScannerActivity::class.java)
@@ -101,6 +110,19 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         try {
+            Log.d(TAG, "onActivityResult called - requestCode: $requestCode,  resultCode: $resultCode, " +
+                    "sessionId: ${data?.getStringExtra(KEY_SESSION_ID)}, any error: ${data?.getStringExtra(KEY_ERROR)}")
+
+            if (requestCode == SHOW_CONSENT_CODE) {
+                val errorMessage = data?.getStringExtra(KEY_ERROR)
+                val sessionId = data?.getStringExtra(KEY_SESSION_ID)
+                Log.d(TAG, "onActivityResult called after showConsent: sessionId: $sessionId, errorMessage: $errorMessage")
+
+                errorMessage?.let {
+                    Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
+                }
+            }
+
             if (requestCode == SCAN_PASSPORT_CODE) {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
@@ -232,6 +254,7 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
     }
 
     companion object {
+        private const val SHOW_CONSENT_CODE = 100
         private const val SCAN_PASSPORT_CODE = 200
         private const val SCAN_DRIVER_LICENSE_CODE = 300
         private const val SCAN_DRIVER_LICENSE_FRONT_CODE = 310
@@ -240,7 +263,7 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
         private const val UPLOAD_ACTIVITY = 100
         private const val INFO_LICENSE_SCANNED_CODE = 260
         private const val API_ERROR = 400
-        private const val TAG = "MainActivity"
+        private const val TAG = "SDLT_MA"
 
         //CaptureType keys
         private const val LIC_FRONT = "lic_front"

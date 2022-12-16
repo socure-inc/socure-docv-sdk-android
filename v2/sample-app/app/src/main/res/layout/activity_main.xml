@@ -49,9 +49,22 @@
                     android:text="Scan Passport"
                     android:background="@color/orange_socure"
                     app:layout_constraintStart_toEndOf="@id/scanIDButton"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_show_consent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <Button
+                    android:id="@+id/btn_show_consent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/light_blue_socure"
+                    android:text="Show Consent"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toEndOf="@id/scanPassportButton"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
