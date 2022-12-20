@@ -25,6 +25,7 @@ import com.socure.idplus.scanner.selfie.SelfieActivity
 import com.socure.idplus.util.ImageUtil.toBitmap
 import com.socure.idplus.util.KEY_ERROR
 import com.socure.idplus.util.KEY_SESSION_ID
+import com.socure.idplus.util.KEY_UPLOAD_TOKEN
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
@@ -111,7 +112,8 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         try {
             Log.d(TAG, "onActivityResult called - requestCode: $requestCode,  resultCode: $resultCode, " +
-                    "sessionId: ${data?.getStringExtra(KEY_SESSION_ID)}, any error: ${data?.getStringExtra(KEY_ERROR)}")
+                    "sessionId: ${data?.getStringExtra(KEY_SESSION_ID)}, uploadToken: ${data?.getStringExtra(KEY_UPLOAD_TOKEN)}," +
+                    " any error: ${data?.getStringExtra(KEY_ERROR)}")
 
             if (requestCode == SHOW_CONSENT_CODE) {
                 val errorMessage = data?.getStringExtra(KEY_ERROR)
