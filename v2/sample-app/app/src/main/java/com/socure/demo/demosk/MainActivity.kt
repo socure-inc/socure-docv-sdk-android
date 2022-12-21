@@ -24,8 +24,9 @@ import com.socure.idplus.scanner.passport.PassportScannerActivity
 import com.socure.idplus.scanner.selfie.SelfieActivity
 import com.socure.idplus.util.ImageUtil.toBitmap
 import com.socure.idplus.util.KEY_ERROR
+import com.socure.idplus.util.KEY_MESSAGE
 import com.socure.idplus.util.KEY_SESSION_ID
-import com.socure.idplus.util.KEY_UPLOAD_TOKEN
+import com.socure.idplus.util.KEY_SESSION_TOKEN
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
@@ -111,31 +112,20 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         try {
-            Log.d(TAG, "onActivityResult called - requestCode: $requestCode,  resultCode: $resultCode, " +
-                    "sessionId: ${data?.getStringExtra(KEY_SESSION_ID)}, uploadToken: ${data?.getStringExtra(KEY_UPLOAD_TOKEN)}," +
-                    " any error: ${data?.getStringExtra(KEY_ERROR)}")
+            val sessionId = data?.getStringExtra(KEY_SESSION_ID)
+            val sessionToken = data?.getStringExtra(KEY_SESSION_TOKEN)
+            val message = data?.getStringExtra(KEY_MESSAGE)
+            val error = data?.getStringExtra(KEY_ERROR)
 
-            if (requestCode == SHOW_CONSENT_CODE) {
-                val errorMessage = data?.getStringExtra(KEY_ERROR)
-                val sessionId = data?.getStringExtra(KEY_SESSION_ID)
-                Log.d(TAG, "onActivityResult called after showConsent: sessionId: $sessionId, errorMessage: $errorMessage")
+            Log.d(TAG, "onActivityResult called - requestCode: $requestCode |  resultCode: $resultCode | session_id: $sessionId | session_token: $sessionToken | message: $message | error: $error")
 
-                val toastMsg = sessionId?.let { id ->
-                    errorMessage?.let { msg ->
-                        "!SUCCESS: $id\n!!$msg"
-                    } ?: run {
-                        "SUCCESS: $id"
-                    }
-                } ?: run {
-                    errorMessage?.let { msg ->
-                        "!!!ERR: $msg"
-                    } ?: run {
-                        "!!!ERR: error msg not received"
-                    }
-                }
-
-                Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show()
+            val toastMsg = error?.let { msg ->
+                "!ERROR: $msg"
+            } ?: run {
+                "SUCCESS: ${if (message != null) "$message - " else ""}Check log"
             }
+
+            Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show()
 
             if (requestCode == SCAN_PASSPORT_CODE) {
                 if (resultCode == Activity.RESULT_OK) {
@@ -264,6 +254,7 @@ class MainActivity : AppCompatActivity(), MultiplePermissionsListener {
             }
             super.onActivityResult(requestCode, resultCode, data)
         } catch (e: Exception) {
+            Log.e(TAG, "Exception occurred parsing result: ${Log.getStackTraceString(e)}")
         }
     }
 
