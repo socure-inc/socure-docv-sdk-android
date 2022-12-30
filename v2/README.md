@@ -2,6 +2,8 @@
 
 The Predictive Document Verification (DocV) Android SDK v2 provides a framework to add image capture and upload services to your mobile application.
 
+>Note: All SDK v2 integrations must be updated to version 2.2.2 or later to meet compliance requirements. Document verification services will be disabled for older SDK versions soon.
+
 ## Minimum Requirements
 
 - Android SDK is compiled with `minSdkVersion 22` and `compilerSDKVersion 32`
