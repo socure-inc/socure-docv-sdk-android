@@ -5,7 +5,7 @@ The aim of this file is to acknowledge the software projects that have been used
 
 -----------------------------------
 
-The following software is distributed with/compiled into Socure DocV SDK:
+The following software are distributed with/compiled into Socure DocV SDK:
 
 - [Retrofit](https://github.com/square/retrofit)
 - [okhttp](https://github.com/square/okhttp)
