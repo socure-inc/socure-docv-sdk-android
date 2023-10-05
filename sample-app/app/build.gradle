@@ -10,9 +10,8 @@ android {
         applicationId "com.socure.docv.sdk.sample"
         minSdk 22
         targetSdk 33
-        versionCode 9
-        versionName "4.1.0"
-
+        versionCode 10
+        versionName "4.2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -22,23 +21,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    def sdk_version = "4.1.0"
+    def sdk_version = "4.2.0"
     implementation "com.github.socure-inc:socure-docv:$sdk_version"
 
     testImplementation 'junit:junit:4.13.2'
