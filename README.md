@@ -2,8 +2,6 @@
 
 Learn how to integrate the Predictive Document Verification (DocV) Android SDK into your Android application. 
 
-> Note: Document verification services will be disabled for older SDK versions soon. All SDK integrations must be updated to version 3.1.0 or later to meet compliance requirements.
-
 ## Minimum Requirements
 
 Before getting started, check that your development environment meets the following requirements:
@@ -40,4 +38,4 @@ In your module level `build.gradle` file, add the following Socure DocV SDK depe
 
 ## Configuration and integration
 
-For instructions on how to configure the SDK, see the [Android SDK documentation](https://developer.socure.com/docs/sdks/docv/android-sdk/v3-and-v4/quick-start) on DevHub.
+For instructions on how to configure the SDK, see the [Android SDK documentation](https://developer.socure.com/docs/sdks/docv/android-sdk/overview) on DevHub.
