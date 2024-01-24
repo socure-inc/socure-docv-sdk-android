@@ -40,3 +40,4 @@ In your module level `build.gradle` file, add the following Socure DocV SDK depe
 ## Configuration and integration
 
 For instructions on how to configure the SDK, see the [Android SDK documentation](https://developer.socure.com/docs/sdks/docv/android-sdk/overview) on DevHub.
+ 

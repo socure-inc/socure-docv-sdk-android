@@ -16,5 +16,7 @@ dependencyResolutionManagement {
         }
     }
 }
+
 rootProject.name = "DocV Sample"
+
 include ':app'
