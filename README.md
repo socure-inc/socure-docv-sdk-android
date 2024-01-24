@@ -23,16 +23,17 @@ To add the DocV SDK to your application, include the Socure DocV SDK Maven repos
 allprojects {
         repositories {
             ...
-            maven { url 'https://jitpack.io' }
+            maven { url 'https://sdk.socure.com' }
         }
     }
 ```
+<sup>**Note**: SDK distribution from jitpack.io is deprecated</sup>
 
 In your module level `build.gradle` file, add the following Socure DocV SDK dependency and replace `x.y.z` with the DocV Android SDK version:
 
 ```
  dependencies {
-      implementation 'com.github.socure-inc:socure-docv:x.y.z'
+      implementation 'com.socure.android:docv-capture:x.y.z'
  }
  ```
 

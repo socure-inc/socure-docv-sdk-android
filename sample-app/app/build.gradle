@@ -38,8 +38,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    def sdk_version = "4.3.0"
-    implementation "com.github.socure-inc:socure-docv:$sdk_version"
+    def sdk_version = "4.3.1"
+    implementation "com.socure.android:docv-capture:$sdk_version"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
