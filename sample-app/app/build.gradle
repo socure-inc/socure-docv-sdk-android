@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.socure.docv.sdk.sample"
         minSdk 22
-        targetSdk 33
+        targetSdk 34
         versionCode 11
-        versionName "4.3.0"
+        versionName "4.3.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
