@@ -6,17 +6,39 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import com.socure.docv.capturesdk.api.SocureDocVHelper
+import com.socure.docv.capturesdk.api.SocureDocVContext
+import com.socure.docv.capturesdk.api.SocureDocVError
+import com.socure.docv.capturesdk.api.SocureSdk
 import com.socure.docv.capturesdk.common.utils.ResultListener
-import com.socure.docv.capturesdk.common.utils.ScanError
-import com.socure.docv.capturesdk.common.utils.ScannedData
+import com.socure.docv.capturesdk.common.utils.SocureDocVFailure
+import com.socure.docv.capturesdk.common.utils.SocureDocVSuccess
+import com.socure.docv.capturesdk.common.utils.SocureResult
+import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
+import retrofit2.http.HeaderMap
+import retrofit2.http.POST
+
+private const val TAG = "MainActivity"
+private const val ID_PLUS_KEY = "YOUR_ID_PLUS_KEY"
+private const val PUBLIC_KEY = "YOUR_PUBLIC_KEY"
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,34 +58,71 @@ class MainActivity : AppCompatActivity() {
 
     // initiate Socure SDK
     private fun launchSocureSdk() {
-        startForResult.launch(
-            SocureDocVHelper.getIntent(this, "YOUR_SOCURE_API_KEY", null)
-        )
+        lifecycleScope.launch(Dispatchers.IO) {
+            runCatching {
+                transaction()
+                    .createTransaction(
+                        createHeaderMap(),
+                        TransactionRequest(
+                            config = TransactionRequest.TransactionConfig(
+                                useCaseKey = "socure_default"
+                            ),
+                        )
+                    )
+            }.onSuccess {
+                startForResult.launch(
+                    SocureSdk.getIntent(
+                        this@MainActivity,
+                        SocureDocVContext(
+                            it.data.docvTransactionToken,
+                            PUBLIC_KEY,
+                            false
+                        )
+                    )
+                )
+            }.onFailure {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Failed to get transaction token",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+        }
     }
 
     // handle response from Socure SDK
     private var startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             result.data?.let {
-                SocureDocVHelper.getResult(it, object : ResultListener {
-                    override fun onSuccess(scannedData: ScannedData) {
+                SocureSdk.getResult(it) { result ->
+                    Log.d(TAG, "onResult called: $result")
+                    if (result is SocureDocVSuccess) {
                         Toast.makeText(
                             this@MainActivity,
-                            "Success -> Session ID: ${scannedData.sessionId}",
-                            Toast.LENGTH_LONG
+                            "onSuccess called: ${result.sessionToken}",
+                            Toast.LENGTH_SHORT
                         ).show()
-                    }
-
-                    override fun onError(scanError: ScanError) {
+                    } else {
+                        val error = result as? SocureDocVFailure
                         Toast.makeText(
                             this@MainActivity,
-                            "Failure: ${scanError.statusCode} -> ${scanError.errorMessage}",
-                            Toast.LENGTH_LONG
+                            "onError called: ${error?.sessionToken}, ${error?.error}",
+                            Toast.LENGTH_SHORT
                         ).show()
                     }
-                })
+                }
             }
         }
+
+    private fun createHeaderMap(): Map<String, String> {
+        val headerMap = mutableMapOf<String, String>()
+        headerMap["Authorization"] = "SocureApiKey".plus(" ")
+            .plus(ID_PLUS_KEY)
+        headerMap["content-type"] = "application/json"
+        return headerMap
+    }
 
     // is camera permission granted
     private fun isCameraPermissionGranted() = ContextCompat.checkSelfPermission(
@@ -94,5 +153,4 @@ class MainActivity : AppCompatActivity() {
                     .show()
             }
         }
-
 }

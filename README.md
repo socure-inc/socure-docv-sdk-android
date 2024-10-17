@@ -11,7 +11,7 @@ Before getting started, check that your development environment meets the follow
 The DocV Android SDK v4 is compiled with:
 
 - `compileSdkVersion 34`
-- Java 11
+- Java 17
 
 > Note: Auto Capture feature requires Android SDK Version 28 (OS Version 9.0) and later with at least 3 GB of RAM. If the device does not meet these requirements, only the manual capture feature will be available.
 
