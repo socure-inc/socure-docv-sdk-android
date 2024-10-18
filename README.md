@@ -1,4 +1,4 @@
-# Predictive DocV Android SDK v4
+# Predictive DocV Android SDK v5
 
 Learn how to integrate the Predictive Document Verification (DocV) Android SDK into your Android application. 
 
@@ -8,10 +8,11 @@ Before getting started, check that your development environment meets the follow
 
 - Android SDK Version 22 (OS Version 5.1) and later
 
-The DocV Android SDK v4 is compiled with:
+The DocV Android SDK v5 is compiled with:
 
-- `compileSdkVersion 33`
-- Java 11
+- `compileSdkVersion 34`
+- Java 17
+- Kotlin 1.8.10
 
 > Note: Auto Capture feature requires Android SDK Version 28 (OS Version 9.0) and later with at least 3 GB of RAM. If the device does not meet these requirements, only the manual capture feature will be available.
 
