@@ -76,7 +76,9 @@ class MainActivity : AppCompatActivity() {
                         SocureDocVContext(
                             it.data.docvTransactionToken,
                             PUBLIC_KEY,
-                            false
+                            false,
+                            null,
+                            null
                         )
                     )
                 )
@@ -101,14 +103,14 @@ class MainActivity : AppCompatActivity() {
                     if (result is SocureDocVSuccess) {
                         Toast.makeText(
                             this@MainActivity,
-                            "onSuccess called: ${result.sessionToken}",
+                            "onSuccess called: ${result.deviceSessionToken}",
                             Toast.LENGTH_SHORT
                         ).show()
                     } else {
                         val error = result as? SocureDocVFailure
                         Toast.makeText(
                             this@MainActivity,
-                            "onError called: ${error?.sessionToken}, ${error?.error}",
+                            "onError called: ${error?.deviceSessionToken}, ${error?.error}",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
