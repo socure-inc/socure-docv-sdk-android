@@ -73,11 +73,11 @@ curl --location 'https://service.socure.com/api/5.0/documents/request' \
 {
   "referenceId": "123ab45d-2e34-46f3-8d17-6f540ae90303",
     "data": {
-      "eventId": "zoYgIxEZUbXBoocYAnbb5DrT",
+      "eventId": "acdf5b1a-c96b-4ed8-92b9-59471397d04a",
       "customerUserId": "121212",
       "docvTransactionToken" : "78d1c86d-03a3-4e11-b837-71a31cb44142", 
       "qrCode": "data:image/png;base64,iVBO......K5CYII=",
-      "url": "https://verify-v2.socure.com/#/t/c5e71062-26d5-478c-8441-b434fcc565d0"
+      "url": "https://verify.socure.com/#/dv/acdf5b1a-c96b-4ed8-92b9-59471397d04a"
     }
 }
 ```
