@@ -11,9 +11,11 @@ android {
         minSdk 22
         targetSdk 34
         versionCode 11
-        versionName "5.0.2"
+        versionName "5.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    namespace "com.socure.docv.sdk.sample"
 
     buildTypes {
         release {
@@ -24,12 +26,25 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_18
+        targetCompatibility JavaVersion.VERSION_18
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '18'
+    }
+
+    flavorDimensions = ["abi"]
+
+    productFlavors {
+        arm64 {
+            dimension "abi"
+            ndk { abiFilters "arm64-v8a" }
+        }
+        arm32 {
+            dimension "abi"
+            ndk { abiFilters "armeabi-v7a" }
+        }
     }
 }
 
@@ -40,7 +55,10 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     def sdk_version = "5.0.2"
-    implementation "com.socure.android:docv-capture:$sdk_version"
+    // implementation "com.socure.android:docv-capture:$sdk_version"
+
+    arm64Implementation 'com.socure.android:docv-capture-arm64:5.1.0'
+    arm32Implementation 'com.socure.android:docv-capture-arm32:5.1.0'
 
     def retrofit_version = "2.9.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
