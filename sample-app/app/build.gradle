@@ -11,7 +11,7 @@ android {
         minSdk 22
         targetSdk 34
         versionCode 11
-        versionName "5.1.0"
+        versionName "5.0.8"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -33,19 +33,6 @@ android {
     kotlinOptions {
         jvmTarget = '18'
     }
-
-    flavorDimensions = ["abi"]
-
-    productFlavors {
-        arm64 {
-            dimension "abi"
-            ndk { abiFilters "arm64-v8a" }
-        }
-        arm32 {
-            dimension "abi"
-            ndk { abiFilters "armeabi-v7a" }
-        }
-    }
 }
 
 dependencies {
@@ -54,11 +41,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    def sdk_version = "5.0.2"
-    // implementation "com.socure.android:docv-capture:$sdk_version"
-
-    arm64Implementation 'com.socure.android:docv-capture-arm64:5.1.0'
-    arm32Implementation 'com.socure.android:docv-capture-arm32:5.1.0'
+    def sdk_version = "5.0.8"
+    implementation "com.socure.android:docv-capture:$sdk_version"
 
     def retrofit_version = "2.9.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
