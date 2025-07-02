@@ -2,7 +2,6 @@ package com.socure.docv.sdk.sample
 
 import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
@@ -19,7 +18,7 @@ fun transaction(): TransactionService {
         .build().create(TransactionService::class.java)
 }
 
-interface TransactionService {
+fun interface TransactionService {
     @POST("api/5.0/documents/request")
     suspend fun createTransaction(
         @HeaderMap headers: Map<String, String>,
@@ -57,12 +56,6 @@ class OkHttpBuilder {
             readTimeout(120L, TimeUnit.SECONDS)
             connectTimeout(120L, TimeUnit.SECONDS)
             writeTimeout(120L, TimeUnit.SECONDS)
-
-            if (BuildConfig.DEBUG) {
-                val loggingInterceptor = HttpLoggingInterceptor()
-                loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS
-                addInterceptor(loggingInterceptor)
-            }
             return build()
         }
     }
