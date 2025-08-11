@@ -2,8 +2,6 @@
 
 Learn how to quickly integrate with the Predictive Document Verification (DocV) Android SDK v5.
 
->Note: The Digital Intelligence SDK is required for all DocV Android SDK v5 integrations. For more information, see [Digital Intelligence Android SDK Quick Start Guide](https://developer.socure.com/docs/sdks/digital-intelligence/android-sdk). 
-
 ## Table of Contents
 
 - [Getting started](#getting-started)
@@ -19,7 +17,6 @@ Learn how to quickly integrate with the Predictive Document Verification (DocV) 
 
 Before you begin, ensure you have the following: 
 
-- Install the latest version of the [Digital Intelligence Android SDK](https://developer.socure.com/docs/sdks/digital-intelligence/android-sdk). 
 - Get a valid [ID+ key from Admin Dashboard](https://developer.socure.com/docs/admin-dashboard/developers/id-plus-keys) to authenticate API requests.
 - Get a valid [SDK key from Admin Dashboard](https://developer.socure.com/docs/admin-dashboard/developers/sdk-keys) to initialize and authenticate the DocV Android SDK.
 - Add your IP address to the [allowlist in Admin Dashboard](https://developer.socure.com/docs/admin-dashboard/developers/allowlist).
@@ -28,7 +25,8 @@ Before you begin, ensure you have the following:
 
 The DocV SDK is compiled with the following:
 - `compileSdkVersion: 34`
-- `Java: 17`
+- `Java: 11`
+- Gradle: `7.5` or higher
 
 ## Step 1: Generate a transaction token and configure the Capture App
 
