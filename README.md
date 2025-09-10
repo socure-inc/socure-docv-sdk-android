@@ -23,10 +23,26 @@ Before you begin, ensure you have the following:
 - Check that your development environment meets the following requirements:
   - Android SDK Version 22 (OS Version 5.1) and later
 
+### Android SDK integration notes
+
 The DocV SDK is compiled with the following:
 - `compileSdkVersion: 34`
-- `Java: 11`
-- Gradle: `7.5` or higher
+- `Java: 17`
+
+#### Upgrading to Android DocV SDK v5.1.1 or later
+
+When upgrading to the **Android DocV v5.1.1 SDK or later**, you must also update the **Device SDK** to at least **v4.5.1**.
+
+#### Using the Device SDK independently
+
+If your application integrates the Device SDK **outside of DocV** (for example, for standalone device capture or validation), you must install the Device SDK **alongside DocV** to avoid runtime errors.
+
+#### 16KB page support
+
+Beginning with Android DocV SDK v5.1.1, support for **16KB memory pages** is included.
+
+> **Note:** This feature requires **Android Gradle Plugin (AGP) v8.5.1 or higher**.  
+> AGP 8.5.1 also requires **Gradle v8.7 or higher**.
 
 ## Step 1: Generate a transaction token and configure the Capture App
 
