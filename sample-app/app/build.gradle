@@ -41,7 +41,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    def sdk_version = "5.2.2"
+    def sdk_version = "5.2.3"
     implementation "com.socure.android:docv-capture:$sdk_version"
 
     def retrofit_version = "2.9.0"
