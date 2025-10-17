@@ -10,8 +10,8 @@ android {
         applicationId "com.socure.docv.sdk.sample"
         minSdk 22
         targetSdk 34
-        versionCode 11
-        versionName "5.2.3"
+        versionCode 12
+        versionName "5.2.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -41,7 +41,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    def sdk_version = "5.2.3"
+    def sdk_version = "5.2.7"
     implementation "com.socure.android:docv-capture:$sdk_version"
 
     def retrofit_version = "2.9.0"
