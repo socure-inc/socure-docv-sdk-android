@@ -4,18 +4,19 @@ plugins {
 }
 
 android {
-    compileSdk 34
+    compileSdkVersion 36
+    buildToolsVersion = "36.0.0"
+    namespace "com.socure.docv.sdk.sample"
 
     defaultConfig {
         applicationId "com.socure.docv.sdk.sample"
         minSdk 22
-        targetSdk 34
+        targetSdk 36
         versionCode 13
         versionName "5.2.8"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    namespace "com.socure.docv.sdk.sample"
 
     buildTypes {
         release {
@@ -23,6 +24,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
+        debug{
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 
     compileOptions {
@@ -40,6 +49,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    androidTestImplementation 'androidx.test.ext:junit-ktx:1.3.0'
+    testImplementation 'androidx.test.ext:junit-ktx:1.3.0'
 
     def sdk_version = "5.2.8"
     implementation "com.socure.android:docv-capture:$sdk_version"
