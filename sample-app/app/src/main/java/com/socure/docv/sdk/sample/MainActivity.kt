@@ -12,29 +12,16 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.socure.docv.capturesdk.api.SocureDocVContext
-import com.socure.docv.capturesdk.api.SocureDocVError
 import com.socure.docv.capturesdk.api.SocureSdk
-import com.socure.docv.capturesdk.common.utils.ResultListener
 import com.socure.docv.capturesdk.common.utils.SocureDocVFailure
 import com.socure.docv.capturesdk.common.utils.SocureDocVSuccess
-import com.socure.docv.capturesdk.common.utils.SocureResult
-import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.HeaderMap
-import retrofit2.http.POST
 
 private const val TAG = "MainActivity"
 private const val ID_PLUS_KEY = "YOUR_ID_PLUS_KEY"
