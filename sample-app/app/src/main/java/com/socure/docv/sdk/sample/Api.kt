@@ -47,7 +47,7 @@ data class TransactionRequest(
 
     data class TransactionConfig(
         val useCaseKey: String,
-        val language: String = "en"
+        val language: String = "auto"
     )
 }
 
