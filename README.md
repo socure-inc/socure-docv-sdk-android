@@ -26,12 +26,16 @@ Before you begin, ensure you have the following:
 ### Android SDK integration notes
 
 The DocV SDK is compiled with the following:
-- `compileSdkVersion: 34`
+- `compileSdkVersion: 36`
 - `Java: 17`
 
 #### Upgrading to Android DocV SDK v5.1.1 or later
 
 When upgrading to the **Android DocV v5.1.1 SDK or later**, you must also update the **Device SDK** to at least **v4.5.1**.
+
+#### Upgrading to Android DocV SDK v5.2.9 or later
+
+When upgrading to the **Android DocV v5.2.9 SDK or later**, you must also update the **Device SDK** to at least **v4.7.2**.
 
 #### Using the Device SDK independently
 
@@ -54,7 +58,7 @@ To initiate the verification process, generate a transaction token (`docvTransac
 
 | Parameter   | Required | Description                                                                                                                                                                                                                                                                                                                                                     |
 |------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `language`       | Optional     | Determines the language package for the UI text on the Capture App.  <br/><br/> **Note**: Socure can quickly add support for new language requirements. For more information, contact [support@socure.com](mailto:support@socure.com). |
+| `language`       | Optional     | Determines the language package for the UI text on the Capture App. You can send value 'auto' as the language parameter, then the Capture App should use the device’s default language as the language to display the Capture App.  <br/><br/> **Note**: Socure can quickly add support for new language requirements. For more information, contact [support@socure.com](mailto:support@socure.com). |
 | `useCaseKey`     | Optional     | Deploys a customized Capture App flow on a per-transaction basis. Replace the `customer_use_case_key` value with the name of the flow you created in [Admin Dashboard](https://developer.socure.com/docs/sdks/docv/capture-app/customize-capture-app). <br/><br/> - If this field is empty, the Capture App will use the flow marked as **Default** in Admin Dashboard. <br/> - If the value provided is incorrect, the SDK will return an `Invalid Request` error. |
 
 >Note: We recommend including as much consumer PII in the body of the request as possible to return the most accurate results. 
