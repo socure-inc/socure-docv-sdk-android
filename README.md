@@ -186,7 +186,9 @@ class Activity : AppCompatActivity() {
                 SocureDocVContext(
                     docvTransactionToken,
                     SDKKey,
-                    useSocureGov
+                    useSocureGov,
+                    null,
+                    null
                 )
             )
         )
