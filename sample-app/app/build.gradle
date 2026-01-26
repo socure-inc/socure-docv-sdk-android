@@ -12,8 +12,8 @@ android {
         applicationId "com.socure.docv.sdk.sample"
         minSdk 22
         targetSdk 36
-        versionCode 14
-        versionName "5.2.9"
+        versionCode 31
+        versionName "5.3.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -52,7 +52,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit-ktx:1.3.0'
     testImplementation 'androidx.test.ext:junit-ktx:1.3.0'
 
-    def sdk_version = "5.3.0"
+    def sdk_version = "5.3.1"
     implementation "com.socure.android:docv-capture:$sdk_version"
 
     def retrofit_version = "2.9.0"
