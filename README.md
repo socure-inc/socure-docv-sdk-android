@@ -21,7 +21,7 @@ Before you begin, ensure you have the following:
 - Get a valid [SDK key from Admin Dashboard](https://developer.socure.com/docs/admin-dashboard/developers/sdk-keys) to initialize and authenticate the DocV Android SDK.
 - Add your IP address to the [allowlist in Admin Dashboard](https://developer.socure.com/docs/admin-dashboard/developers/allowlist).
 - Check that your development environment meets the following requirements:
-  - Android SDK Version 22 (OS Version 5.1) and later
+  - Android SDK Version 23 (OS Version 6) and later
 
 ### Android SDK integration notes
 
@@ -29,13 +29,11 @@ The DocV SDK is compiled with the following:
 - `compileSdkVersion: 36`
 - `Java: 17`
 
-#### Upgrading to Android DocV SDK v5.1.1 or later
+#### Upgrading to Android DocV SDK v5.4.0 or later
 
-When upgrading to the **Android DocV v5.1.1 SDK or later**, you must also update the **Device SDK** to at least **v4.5.1**.
+This version is required to use **Kotlin Version 2.1.0 or later**. This is required to support the latest language features and library dependencies utilized in this version.
+When upgrading to the **Android DocV v5.4.0 SDK or later**, you must also update the **Device SDK** to at least **v4.8.0**.
 
-#### Upgrading to Android DocV SDK v5.2.9 or later
-
-When upgrading to the **Android DocV v5.2.9 SDK or later**, you must also update the **Device SDK** to at least **v4.7.2**.
 
 #### Using the Device SDK independently
 
@@ -118,7 +116,7 @@ In your module level `build.gradle` file, add the following Socure DocV SDK depe
 
 ```
 dependencies {
-    implementation 'com.socure.android:docv-capture:5.0.0'
+    implementation 'com.socure.android:docv-capture:5.4.0'
 }
 ```
 
