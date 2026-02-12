@@ -10,17 +10,17 @@ android {
 
     defaultConfig {
         applicationId "com.socure.docv.sdk.sample"
-        minSdk 22
+        minSdk 23
         targetSdk 36
-        versionCode 31
-        versionName "5.3.1"
+        versionCode 40
+        versionName "5.4.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
@@ -45,14 +45,14 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.core:core-ktx:1.17.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     androidTestImplementation 'androidx.test.ext:junit-ktx:1.3.0'
     testImplementation 'androidx.test.ext:junit-ktx:1.3.0'
 
-    def sdk_version = "5.3.1"
+    def sdk_version = "5.4.0"
     implementation "com.socure.android:docv-capture:$sdk_version"
 
     def retrofit_version = "2.9.0"
