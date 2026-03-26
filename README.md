@@ -116,7 +116,7 @@ In your module level `build.gradle` file, add the following Socure DocV SDK depe
 
 ```
 dependencies {
-    implementation 'com.socure.android:docv-capture:5.4.0'
+    implementation 'com.socure.android:docv-capture:5.4.1'
 }
 ```
 
@@ -135,10 +135,6 @@ Ensure that your app manifest has been set up properly to request the following 
 <uses-permission android:name="android.permission.CAMERA" />
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-<uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
 ```
 
 ### Initialize and launch the SDK
