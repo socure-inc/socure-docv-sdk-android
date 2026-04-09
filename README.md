@@ -34,6 +34,56 @@ The DocV SDK is compiled with the following:
 This version is required to use **Kotlin Version 2.1.0 or later**. This is required to support the latest language features and library dependencies utilized in this version.
 When upgrading to the **Android DocV v5.4.0 SDK or later**, you must also update the **Device SDK** to at least **v4.8.0**.
 
+The Socure SDK uses the TensorFlow Lite runtime since version 5.4.0:
+
+```gradle
+implementation 'com.google.ai.edge.litert:litert:2.1.0'
+```
+
+This version supports only the following CPU architectures:
+- arm64-v8a
+- x86_64
+
+As a result, the library does not include native .so binaries for the following architectures:
+- armeabi-v7a
+- x86
+
+##### Option 1 — Support Only arm64-v8a
+
+If your application targets only 64-bit ARM devices, you should exclude unsupported architectures from your APK by configuring ABI filters in your app’s `build.gradle` file:
+
+```gradle
+android {
+    defaultConfig {
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+    }
+}
+```
+
+This ensures that unsupported architectures are not packaged into the application.
+
+
+##### Option 2 — Support Both armeabi-v7a and arm64-v8a
+
+If your application must support both 32-bit and 64-bit ARM devices, you can force the use of an earlier TensorFlow LiteRT version that still includes support for armeabi-v7a.
+
+Add the following configuration to your app-level `build.gradle`:
+
+```gradle
+configurations.configureEach {
+    resolutionStrategy {
+        force 'com.google.ai.edge.litert:litert:1.4.1'
+    }
+}
+```
+
+This forces Gradle to resolve the TensorFlow LiteRT dependency to version 1.4.1, which includes native libraries for both:
+- armeabi-v7a
+- arm64-v8a
+
+
 
 #### Using the Device SDK independently
 
