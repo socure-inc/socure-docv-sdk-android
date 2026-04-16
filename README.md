@@ -29,6 +29,20 @@ The DocV SDK is compiled with the following:
 - `compileSdkVersion: 36`
 - `Java: 17`
 
+#### Upgrading to Android DocV SDK v5.4.3 or later
+The Socure SDK uses the TensorFlow Lite 1.4.1 runtime since version 5.4.3 in order to support:
+- arm64-v8a
+- armeabi-v7a
+    
+If you would like to continue using the newer TensorFlow 2.1.1 with SDK 5.4.3, this will require a custom Gradle configuration on your side:
+```gradle
+configurations.configureEach {
+    resolutionStrategy {
+        force 'com.google.ai.edge.litert:litert:2.1.1'
+    }
+}
+```
+
 #### Upgrading to Android DocV SDK v5.4.0 or later
 
 This version is required to use **Kotlin Version 2.1.0 or later**. This is required to support the latest language features and library dependencies utilized in this version.
