@@ -26,10 +26,11 @@ jobs:
       snyk_strict_scan: false
       detect_accuracy_required: NONE
       detect_tools: SIGNATURE_SCAN
-
-      sync-to-socure-inc:
-        if: github.ref_name == 'main'
-        uses: commercial/common-ci-cd-workflows/.github/workflows/global-sync-to-socure-inc-repos.yml@main
-        with:
-          target_repo: socure-inc/socure-docv-sdk-android
     secrets: inherit
+
+    sync-to-socure-inc:
+      if: github.ref_name == 'main'
+      uses: commercial/common-ci-cd-workflows/.github/workflows/global-sync-to-socure-inc-repos.yml@main
+      with:
+        target_repo: socure-inc/socure-docv-sdk-android
+      secrets: inherit
