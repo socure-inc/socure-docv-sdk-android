@@ -176,11 +176,11 @@ allprojects {
 }
 ```
 
-In your module level `build.gradle` file, add the following Socure DocV SDK dependency and replace `x.y.z` with the DocV Android SDK version number (for example: `5.0.0`):
+In your module level `build.gradle` file, add the following Socure DocV SDK dependency and replace `x.y.z` with the DocV Android SDK version number (for example: `5.4.5`):
 
 ```
 dependencies {
-    implementation 'com.socure.android:docv-capture:5.4.1'
+    implementation 'com.socure.android:docv-capture:5.4.5'
 }
 ```
 
