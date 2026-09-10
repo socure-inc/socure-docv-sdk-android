@@ -296,6 +296,7 @@ enum class SocureDocVError {
     INVALID_DOCV_TRANSACTION_TOKEN,
     DOCUMENT_UPLOAD_FAILURE,
     CONSENT_DECLINED,
+    GUARDIAN_CONSENT_DECLINED,
     CAMERA_PERMISSION_DECLINED,
     USER_CANCELED, 
     NO_INTERNET_CONNECTION, 
@@ -313,6 +314,7 @@ The following table lists the error values that can be returned by the `SocureDo
 | `INVALID_DOCV_TRANSACTION_TOKEN`| Invalid transaction token                                   |
 | `DOCUMENT_UPLOAD_FAILURE`       | Failed to upload the documents                              |
 | `CONSENT_DECLINED`              | Consent declined by the user                                            |
+| `GUARDIAN_CONSENT_DECLINED`     | Consent declined by the guardian                               |
 | `CAMERA_PERMISSION_DECLINED`    | Permissions to open the camera declined by the user      |
 | `USER_CANCELED`                 | Scan canceled by the user                                   |
 | `NO_INTERNET_CONNECTION`        | No internet connection                                      |
