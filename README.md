@@ -180,7 +180,7 @@ In your module level `build.gradle` file, add the following Socure DocV SDK depe
 
 ```
 dependencies {
-    implementation 'com.socure.android:docv-capture:5.6.1'
+    implementation 'com.socure.android:docv-capture:5.6.2'
 }
 ```
 
