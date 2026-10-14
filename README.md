@@ -133,7 +133,7 @@ curl --location 'https://service.socure.com/api/5.0/documents/request' \
   "config": {
     "useCaseKey": "customer_use_case_key", 
     ...
-  }
+  },
   "firstName": "Dwayne",
   "surName": "Denver",
   "dob": "1975-04-02",
