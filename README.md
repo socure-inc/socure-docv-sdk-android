@@ -17,6 +17,9 @@ Learn how to quickly integrate with the Predictive Document Verification (DocV) 
   - [Initialize and launch the SDK](#initialize-and-launch-the-sdk)
   - [Handle the response](#handle-the-response)
 - [Step 3: Fetch the verification results](#step-3-fetch-the-verification-results)
+- [External dependencies](#external-dependencies)
+- [Run the sample app locally](#run-the-sample-app-locally)
+- [Run tests](#run-tests)
 
 ## Getting started
 
@@ -464,3 +467,70 @@ The following table lists the error values that can be returned by the `SocureDo
 ## Step 3: Fetch the verification results 
 
 When the consumer successfully completes the document capture and upload process, call the ID+ endpoint to fetch the results. See the [API Reference documentation](https://developer.socure.com/reference#tag/ID+/operation/ID+) on DevHub for more information. 
+
+## External dependencies
+
+### Services
+
+| Service | Used by | Purpose |
+|---|---|---|
+| Socure Maven repository (`https://sdk.socure.com`) | Your build | Hosts the `com.socure.android:docv-capture` artifact. |
+| Socure Document Request API (`https://service.socure.com/api/5.0/documents/request`) | Your backend (the sample app calls it directly for demo purposes only) | Generates the `docvTransactionToken`. See [Step 1](#step-1-generate-a-transaction-token-and-configure-the-capture-app). |
+| Socure DocV services (commercial or SocureGov) | DocV SDK | Session initiation and document upload during the capture flow. |
+| Socure ID+ API | Your backend | Fetches the verification results. See [Step 3](#step-3-fetch-the-verification-results). |
+| Datadog (US1; US1-FED for SocureGov sessions) | DocV SDK v5.7.0 or later | Diagnostic telemetry sent to Socure. See [Datadog telemetry](#upgrading-to-android-docv-sdk-v570-or-later-datadog-telemetry). |
+
+### Libraries
+
+The DocV SDK brings the following notable third-party libraries into your app:
+
+| Library | Version | Notes |
+|---|---|---|
+| `com.datadoghq:dd-sdk-android-core`, `dd-sdk-android-logs` | 3.13.1 | Added in v5.7.0. See [If your app already uses Datadog](#if-your-app-already-uses-datadog). |
+| `com.google.ai.edge.litert:litert` (TensorFlow Lite) | 1.4.1 | See [Upgrading to Android DocV SDK v5.4.3 or later](#upgrading-to-android-docv-sdk-v543-or-later). |
+| Socure Device SDK | 4.8.0 or later | See [Using the Device SDK independently](#using-the-device-sdk-independently). |
+
+
+Dependencies resolve from `google()`, `mavenCentral()`, and `https://sdk.socure.com`, as declared in `sample-app/settings.gradle`.
+
+## Run the sample app locally
+
+The `sample-app/` directory contains a working Android project that mirrors the code in this guide.
+
+### Prerequisites
+
+- JDK 17
+- Android SDK Platform 36 (Android Studio, or the Android SDK command-line tools with `ANDROID_HOME` set)
+- A physical device or emulator running Android 6.0 (API 23) or later, with a camera
+- A valid ID+ key and SDK key, with your IP address on the allowlist. See [Getting started](#getting-started).
+
+The Gradle wrapper (Gradle 8.14.3) is included in `sample-app/`, so you don't need to install Gradle separately. The project uses Android Gradle Plugin 8.12.3 and Kotlin 2.1.0.
+
+### Steps
+
+1. In `sample-app/app/src/main/java/com/socure/docv/sdk/sample/MainActivity.kt`, replace `YOUR_ID_PLUS_KEY` and `YOUR_PUBLIC_KEY` with your ID+ key and SDK key.
+
+   > **Warning:** The sample app calls the Document Request endpoint directly from the device, which embeds your ID+ key in the app. This is for demonstration only. In production, generate the transaction token from your backend as described in [Step 1](#step-1-generate-a-transaction-token-and-configure-the-capture-app). Do not commit real keys.
+
+2. Build and install the debug build on a connected device or emulator:
+
+   ```bash
+   cd sample-app
+   ./gradlew installDebug
+   ```
+
+   Alternatively, open the `sample-app/` directory in Android Studio and run the `app` configuration.
+
+3. Open **DocV Sample** and tap **Start Socure DocV SDK**. The app requests camera permission if needed, fetches a transaction token, and launches the capture flow. The result is shown in a toast and logged under the `MainActivity` tag.
+
+## Run tests
+
+The sample app has no automated tests. It is a minimal integration example, so `./gradlew test` and `./gradlew connectedAndroidTest` run no tests.
+
+To check the sample app, build it from the `sample-app/` directory:
+
+```bash
+./gradlew assembleDebug
+```
+
+Then verify the integration manually on a device or emulator, as described in [Run the sample app locally](#run-the-sample-app-locally): complete a capture flow and confirm that the app shows an `onSuccess called` toast with a `deviceSessionToken`, or an `onError called` toast with the expected `SocureDocVError` for a failure case, such as `USER_CANCELED` when you exit the capture flow before completing it.
