@@ -10,7 +10,7 @@ Learn how to quickly integrate with the Predictive Document Verification (DocV) 
   - [Upgrading to Android DocV SDK v5.4.0 or later](#upgrading-to-android-docv-sdk-v540-or-later)
   - [Using the Device SDK independently](#using-the-device-sdk-independently)
   - [16KB page support](#16kb-page-support)
-- [Step 1: Generate a transaction token](#step-1-generate-a-transaction-token)
+- [Step 1: Generate a transaction token](#step-1-generate-a-transaction-token-and-configure-the-capture-app)
   - [Call the Document Request endpoint](#call-the-document-request-endpoint)
 - [Step 2: Add the DocV Android SDK](#step-2-add-the-docv-android-sdk)
   - [Camera and file permissions](#camera-and-file-permissions)
@@ -69,7 +69,7 @@ Datadog is **not** shaded or relocated. Your app and the DocV SDK share one `com
 
 ##### If your app already uses Datadog
 
-| | |
+| Requirement | Detail |
 |---|---|
 | Datadog version the SDK embeds | `dd-sdk-android` **3.13.1** |
 | Supported `dd-sdk-android` range for your app | **3.6.0 – 3.13.1**, with all `com.datadoghq:*` artifacts on the same version |
@@ -169,6 +169,7 @@ A successful build does not prove that telemetry works: every version mismatch t
 Versions above 3.13.1 are untested. When opening a support case about telemetry or Datadog, include the output of the `dependencies` command above, your DocV SDK version, which Datadog features you enable (Logs, Traces, RUM), and whether you use `failOnVersionConflict()`, `resolutionStrategy.force`, or `constraints` on `com.datadoghq`.
 
 #### Upgrading to Android DocV SDK v5.4.3 or later
+
 The Socure SDK uses the TensorFlow Lite 1.4.1 runtime since version 5.4.3 in order to support:
 - arm64-v8a
 - armeabi-v7a
@@ -201,7 +202,7 @@ As a result, the library does not include native .so binaries for the following 
 - armeabi-v7a
 - x86
 
-##### Option 1 — Support Only arm64-v8a
+##### Option 1 — Support only arm64-v8a
 
 If your application targets only 64-bit ARM devices, you should exclude unsupported architectures from your APK by configuring ABI filters in your app’s `build.gradle` file:
 
@@ -218,7 +219,7 @@ android {
 This ensures that unsupported architectures are not packaged into the application.
 
 
-##### Option 2 — Support Both armeabi-v7a and arm64-v8a
+##### Option 2 — Support both armeabi-v7a and arm64-v8a
 
 If your application must support both 32-bit and 64-bit ARM devices, you can force the use of an earlier TensorFlow LiteRT version that still includes support for armeabi-v7a.
 
@@ -259,7 +260,7 @@ To initiate the verification process, generate a transaction token (`docvTransac
 
 | Parameter   | Required | Description                                                                                                                                                                                                                                                                                                                                                     |
 |------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `language`       | Optional     | Determines the language package for the UI text on the Capture App. You can send value 'auto' as the language parameter, then the Capture App should use the device’s default language as the language to display the Capture App.  <br/><br/> **Note**: Socure can quickly add support for new language requirements. For more information, contact [support@socure.com](mailto:support@socure.com). |
+| `language`       | Optional     | Determines the language package for the UI text on the Capture App. If you send `auto` as the language parameter, the Capture App uses the device's default language as the language to display the Capture App.  <br/><br/> **Note**: Socure can quickly add support for new language requirements. For more information, contact [support@socure.com](mailto:support@socure.com). |
 | `useCaseKey`     | Optional     | Deploys a customized Capture App flow on a per-transaction basis. Replace the `customer_use_case_key` value with the name of the flow you created in [Admin Dashboard](https://developer.socure.com/docs/sdks/docv/capture-app/customize-capture-app). <br/><br/> - If this field is empty, the Capture App will use the flow marked as **Default** in Admin Dashboard. <br/> - If the value provided is incorrect, the SDK will return an `Invalid Request` error. |
 
 >Note: We recommend including as much consumer PII in the body of the request as possible to return the most accurate results. 
@@ -272,7 +273,7 @@ curl --location 'https://service.socure.com/api/5.0/documents/request' \
   "config": {
     "useCaseKey": "customer_use_case_key", 
     ...
-  }
+  },
   "firstName": "Dwayne",
   "surName": "Denver",
   "dob": "1975-04-02",
@@ -306,7 +307,7 @@ curl --location 'https://service.socure.com/api/5.0/documents/request' \
 
 To add the DocV SDK to your application, include the Socure DocV SDK Maven repository in your `build.gradle` file at the end of the `allprojects > repositories` section:
 
-```
+```gradle
 allprojects {
     repositories {
         ...
@@ -317,7 +318,7 @@ allprojects {
 
 In your module level `build.gradle` file, add the following Socure DocV SDK dependency. The example uses the latest DocV Android SDK version, `5.7.0`; replace it if you need a different version:
 
-```
+```gradle
 dependencies {
     implementation 'com.socure.android:docv-capture:5.7.0'
 }
@@ -331,7 +332,7 @@ The DocV SDK requires camera and file permission to capture identity documents. 
 
 Ensure that your app manifest has been set up properly to request the following required permissions:
 
-```
+```xml
 <uses-feature android:name="android.hardware.camera" />
 
 <!-- Declare permissions -->
@@ -397,7 +398,7 @@ The following table lists the arguments passed to the `startForResult.launch` fu
 
 | Parameter                | Type    | Description                                                                                                                                                                                                                                            |
 |--------------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `docVTransactionToken`    | String  | The transaction token retrieved from the API response of the [`/documents/request`](https://developer.socure.com/reference#tag/Predictive-Document-Verification/operation/DocumentRequestV5) endpoint. Required to initiate the document verification session. |
+| `docvTransactionToken`    | String  | The transaction token retrieved from the API response of the [`/documents/request`](https://developer.socure.com/reference#tag/Predictive-Document-Verification/operation/DocumentRequestV5) endpoint. Required to initiate the document verification session. |
 | `SDKKey`                 | String  | The unique SDK key obtained from [Admin Dashboard](https://developer.socure.com/docs/admin-dashboard/developers/sdk-keys) used to authenticate the SDK.                                                                                                      |
 | `useSocureGov`            | Boolean | A Boolean flag indicating whether to use the GovCloud environment. It defaults to `false`. This is only applicable for customers provisioned in the SocureGov environment.                                                                             |
 
@@ -462,4 +463,4 @@ The following table lists the error values that can be returned by the `SocureDo
 
 ## Step 3: Fetch the verification results 
 
-When the consumer successfully completes the document capture and upload process, call the ID+ endpoint fetch the results. See the [API Reference documentation](https://developer.socure.com/reference#tag/ID+/operation/ID+) on DevHub for more information. 
+When the consumer successfully completes the document capture and upload process, call the ID+ endpoint to fetch the results. See the [API Reference documentation](https://developer.socure.com/reference#tag/ID+/operation/ID+) on DevHub for more information. 
