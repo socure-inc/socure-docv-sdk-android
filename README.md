@@ -36,7 +36,7 @@ The DocV SDK is compiled with the following:
 
 #### Upgrading to Android DocV SDK v5.7.0 or later: Datadog telemetry
 
-Beginning with Android DocV SDK v5.7.0, the SDK reports diagnostic telemetry to Socure through Datadog. This helps Socure investigate capture and upload issues on your integration faster. Telemetry is on by default and requires no code changes or new permissions.
+Beginning with Android DocV SDK v5.7.0, the SDK reports diagnostic telemetry to Socure through Datadog. This helps Socure investigate capture and upload issues on your integration faster. Telemetry is on by default and requires no code changes or new permissions. There is no API or configuration option to opt out of telemetry; see [When it is off](#how-it-runs-alongside-your-app) for the only case in which it is not sent.
 
 > **Note:** If your app does not use Datadog, no action is required. If it does, read [If your app already uses Datadog](#if-your-app-already-uses-datadog) before upgrading.
 
@@ -54,7 +54,7 @@ Sensitive identifiers (tokens, reference IDs, public keys, device IDs) are repla
 - **No process-wide crash reporting:** Datadog's own crash reporting is disabled on the SDK's instance, and RUM is not included, so it does not compete with your RUM crash reporting. While the capture flow is open, the SDK briefly watches for crashes in its own code. Every crash is still passed on to your app's existing crash handler, and your handler is restored when the flow ends.
 - **Lazy start:** The SDK's Datadog instance starts only when the capture flow starts.
 - **Region:** SocureGov sessions are sent to Datadog's FedRAMP site (US1-FED). All other sessions are sent to US1.
-- **When it is off:** Telemetry is not sent when you route the SDK through your own proxy URLs.
+- **When it is off:** Telemetry is not sent when you route the SDK through your own DocV proxy URL (`docvBaseUrl` in `SocureDocVContext`). This is the only case in which telemetry is disabled; the SDK provides no separate opt-out.
 
 ##### Dependencies added to your app
 
@@ -72,7 +72,7 @@ Datadog is **not** shaded or relocated. Your app and the DocV SDK share one `com
 | | |
 |---|---|
 | Datadog version the SDK embeds | `dd-sdk-android` **3.13.1** |
-| Supported `dd-sdk-android` range for your app | **3.6.0 – 3.13.1** |
+| Supported `dd-sdk-android` range for your app | **3.6.0 – 3.13.1**, with all `com.datadoghq:*` artifacts on the same version |
 | Required | Every `com.datadoghq:*` artifact in your build must resolve to the **same** version |
 
 Datadog publishes no BOM and removes cross-artifact APIs in minor releases, so nothing aligns its artifacts for you. Gradle picks the newest version by default, so adding the DocV SDK can raise your Datadog artifacts to 3.13.1, including artifacts you pinned lower on purpose. An artifact the SDK does not declare, such as `dd-sdk-android-rum`, stays where you put it. That split is the most common cause of build failures:
@@ -139,7 +139,7 @@ Confirm that every Datadog artifact resolves to the same version (`->` arrows ar
 | On 2.x | Migrate to 3.6.0 or later before integrating, or pin the whole set at 3.6.0 or later. A split set across 2.x and 3.x is not supported. |
 | Declaring only `dd-sdk-android-rum` | Use the `constraints` block. |
 | Using `failOnVersionConflict()` | Add the `constraints` block, or exempt `com.datadoghq`. |
-| Pinning only `dd-sdk-android-core` lower | Keep `-core` at **3.11.0 or later**, or align everything. |
+| Pinning only `dd-sdk-android-core` lower, leaving the SDK's `dd-sdk-android-logs` at 3.13.1 | This is a mixed set, not the aligned setup the 3.6.0 – 3.13.1 range covers. Align everything with the `constraints` block (recommended). If you must pin `-core` alone, keep it at **3.11.0 or later**; below that, expect runtime errors on Datadog's log write path, even though 3.6.0 – 3.10.x is fine when every artifact is aligned. |
 
 ##### Verifying your integration
 
@@ -315,11 +315,11 @@ allprojects {
 }
 ```
 
-In your module level `build.gradle` file, add the following Socure DocV SDK dependency and replace `x.y.z` with the DocV Android SDK version number (for example: `5.0.0`):
+In your module level `build.gradle` file, add the following Socure DocV SDK dependency. The example uses the latest DocV Android SDK version, `5.7.0`; replace it if you need a different version:
 
 ```
 dependencies {
-    implementation 'com.socure.android:docv-capture:5.4.1'
+    implementation 'com.socure.android:docv-capture:5.7.0'
 }
 ```
 
