@@ -166,7 +166,7 @@ A successful build does not prove that telemetry works: every version mismatch t
 | `[socure-docv-android]` batches never appear | The capture flow never started, or Datadog resolved below 3.6.0. |
 | `Requested to forward error log to RUM, but RUM feature is not registered.` in logcat | Expected and harmless. It does not affect your RUM data. |
 
-Versions above 3.13.1 are untested. If you need a newer Datadog version than the SDK declares. When opening a support case about telemetry or Datadog, include the output of the `dependencies` command above, your DocV SDK version, which Datadog features you enable (Logs, Traces, RUM), and whether you use `failOnVersionConflict()`, `resolutionStrategy.force`, or `constraints` on `com.datadoghq`.
+Versions above 3.13.1 are untested. When opening a support case about telemetry or Datadog, include the output of the `dependencies` command above, your DocV SDK version, which Datadog features you enable (Logs, Traces, RUM), and whether you use `failOnVersionConflict()`, `resolutionStrategy.force`, or `constraints` on `com.datadoghq`.
 
 #### Upgrading to Android DocV SDK v5.4.3 or later
 The Socure SDK uses the TensorFlow Lite 1.4.1 runtime since version 5.4.3 in order to support:
